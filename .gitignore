@@ -1,0 +1,13 @@
+# Diretórios gerados e temporários
+node_modules/
+dist/
+coverage/
+.tmp/
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
