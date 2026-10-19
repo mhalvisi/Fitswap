@@ -12,3 +12,25 @@
 
 /* Ajustes finais de alvos de toque e contagem em telas compactas */
 .icon-button{width:48px;height:48px}.icon-button.mini{width:48px;height:48px}.nav-item{min-height:58px}.chip{min-height:48px}.compact-filter{min-height:48px}.outline-pill{min-height:48px}.heart-button{height:48px;width:42px}.chev-btn{height:48px}.select-square{width:48px;height:48px}.busy-button{min-height:48px}.toggle-action{min-height:48px}.text-link{min-height:48px}.mode-tabs{height:58px;padding:4px}.detail-tabs button{min-height:48px}.gym-summary>div:first-child{flex:none}.gym-summary-num{font-size:41px;white-space:nowrap}.gym-summary-num span{font-size:16px}.gym-summary{gap:14px}
+
+/* FitSwap 1.1 — miniaturas autorizadas e galeria em formato mobile */
+.feed-card .media-visual{overflow:hidden;position:relative;background:#e9f0e5}
+.feed-card .media-visual .media-thumb{width:100%;height:100%;object-fit:cover;display:block}
+.media-placeholder-symbol{width:100%;height:100%;display:grid;place-items:center;color:#507353}
+.media-gallery{margin:3px 0 16px;min-height:188px;border-radius:22px;background:linear-gradient(145deg,#edf5e9,#e2ecdf)}
+.media-gallery-empty{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:9px;padding:25px 24px;border:1px dashed #bdd0b8}
+.media-gallery-empty strong{font-size:15px;font-weight:850;color:#25402d}
+.media-gallery-empty span{max-width:240px;color:#69796a;font-size:12px;line-height:1.5}
+.media-gallery-symbol{width:60px;height:60px;border-radius:22px;display:grid;place-items:center;background:#fff9;color:#446b3b}
+.media-gallery-scroll{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding:0;background:transparent;scrollbar-width:thin}
+.media-figure{margin:0;min-width:95%;max-width:95%;display:flex;flex-direction:column;overflow:hidden;scroll-snap-align:start;border-radius:20px;background:white;border:1px solid #e8eee7}
+.media-figure img,.media-load-error{width:100%;height:208px;object-fit:contain;background:#edf3e9}
+.media-load-error{display:grid;place-items:center;color:#6a7d68;font-size:12px;padding:20px}
+.media-figure figcaption{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:9px 12px;font-size:10px;color:#68776b;min-height:42px}
+.media-figure figcaption span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.media-figure figcaption a{flex:none;color:#365e31;text-decoration:underline;text-underline-offset:2px}
+.model-list{border-radius:17px;background:#eef4ea;padding:13px 15px;margin-bottom:14px;font-size:12px;line-height:1.55;color:#48604b}
+.model-list strong{display:block;font-size:12px;color:#263e30;margin-bottom:7px}
+@media(max-width:360px){.media-gallery{min-height:170px}.media-figure img{height:175px}}
+
+.media-credits{display:flex;align-items:center;gap:9px;white-space:nowrap}
