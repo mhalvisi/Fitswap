@@ -1,3 +1,7 @@
+# FitSwap 1.3 beta — opções de treino organizadas por padrão
+
+Agora o FitSwap separa exercícios de mesmo padrão, padrões relacionados e demais movimentos para o mesmo músculo, sem afirmar equivalência biomecânica. Os casos exigem revisão por profissional de Educação Física. Documentação: `catalogo/RECOMENDACOES-1-3.md`.
+
 ## FitSwap 1.2 (beta) — expansão editorial da musculação
 
 O catálogo foi ampliado de **62 para 89 tipos de equipamentos** e de **103 para 175 exercícios** (+27 aparelhos/acessórios e +72 movimentos). Os novos registros incluem identificação em português, termos de busca comuns, músculos, padrão de movimento, configurações completas de equipamentos, nível sugerido e três orientações de execução. Os 17 grupos musculares e os IDs existentes foram preservados para não quebrar favoritos e academias salvas.

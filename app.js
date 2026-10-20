@@ -74,18 +74,10 @@ function exText(ex){return [ex.name, pName(ex.pattern), ...ex.primary.map(mName)
 function equipmentText(eq){return [eq.name,eq.group,...eq.aliases,...(modelsByEquipment[eq.id]||[]).flatMap(m=>[m.brand,m.model,...(m.aliases||[])])].join(' ');}
 function relatedToEq(id){return allExercises.filter(ex=>ex.setups.some(kit=>kit.includes(id)));}
 function excerpt(ex){return [...new Set(ex.setups.flat().map(eqName))].slice(0,2).join(' · ');}
-function kitSignature(kit){return [...kit].sort().join('+');}
 function availableAlternatives(ex){
-  const originals=new Set(ex.setups.map(kitSignature));
-  return DB.exercises.filter(other=> other.id!==ex.id && other.primary.some(id=>ex.primary.includes(id)))
-   .map(other=>{
-     const kit=other.setups.find(k=>kitAvailable(k) && !originals.has(kitSignature(k)));
-     if(!kit)return null;
-     const samePattern=other.pattern===ex.pattern;
-     const overlap=other.primary.filter(id=>ex.primary.includes(id)).length;
-     const score=overlap*100 + (samePattern?85:0) +(other.kind===ex.kind?12:0);
-     return {ex:other,kit,samePattern,score};
-   }).filter(Boolean).sort((a,b)=>b.score-a.score || a.ex.name.localeCompare(b.ex.name,'pt-BR'));
+  return window.FITSWAP_SUBSTITUICOES.getAlternatives({
+    target:ex, exercises:DB.exercises, isKitAvailable:kitAvailable, gym:state.gym
+  });
 }
 function titleForPage(){return ({home:'fitswap',explore:'Explorar',gym:'Minha academia',saved:'Salvos'})[state.page]||'FitSwap';}
 function renderHeader(){
@@ -207,10 +199,22 @@ function kitCard(kit,i){
  return `<div class="equip-status"><div class="equip-status-head"><strong>${escapeHTML(kit.map(eqName).join(' + '))}</strong><span class="status-chip ${busy?'warn':present?'':'neutral'}">${summary}</span></div><small>Configuração ${i+1} · ${kit.length>1?'Equipamentos combinados':'Equipamento único'}</small>${kit.map(eqActions).join('')}</div>`;
 }
 function renderAlternatives(ex){
- const opts=availableAlternatives(ex);
- return `<div class="sheet-section-head"><h3>Alternativas para você</h3><span>${opts.length} disponíveis*</span></div>
-  <p class="sheet-intro">Primeiro, movimentos com padrão semelhante; depois, outros que trabalham o mesmo músculo.</p>
-  ${opts.length?opts.slice(0,15).map((entry,i)=> `<button class="substitute" data-action="exercise" data-id="${entry.ex.id}"><span class="sub-rank">${i+1}</span><span class="sub-body"><span class="reason ${entry.samePattern?'':'different'}">${entry.samePattern?'Movimento semelhante':'Mesmo músculo · movimento diferente'}</span><strong>${escapeHTML(entry.ex.name)}</strong><small>${escapeHTML(entry.kit.map(eqName).join(' + '))}</small></span>${icon('chevron','s18')}</button>`).join(''):`<div class="empty-state">${icon('info','s28')}<strong>Sem alternativas com esses filtros</strong><p>Confira as máquinas ocupadas ou amplie a seleção de equipamentos da sua academia.</p><button data-action="navigate" data-id="gym">Abrir minha academia</button></div>`}`;
+  const opts=availableAlternatives(ex);
+  const groups=[
+    {tier:0,title:'Mesmo padrão de movimento',hint:'Classificação de catálogo; não garante equivalência de carga, técnica ou estímulo.',limit:8},
+    {tier:1,title:'Movimentos relacionados',hint:'Padrão próximo, mas exige avaliação das diferenças.',limit:6},
+    {tier:2,title:'Outros movimentos para o músculo',hint:'Não são substituições diretas do exercício original.',limit:4}
+  ];
+  const renderGroup=group=>{
+    const rows=opts.filter(item=>item.tier===group.tier).slice(0,group.limit);
+    if(!rows.length)return '';
+    return `<section class='alternative-group'><div class='sheet-section-head'><h3>${escapeHTML(group.title)}</h3><span>${rows.length} exibidos</span></div><p class='sheet-intro'>${escapeHTML(group.hint)}</p>${rows.map((entry,i)=>
+      `<button class='substitute' data-action='exercise' data-id='${escapeHTML(entry.ex.id)}'><span class='sub-rank'>${i+1}</span><span class='sub-body'><span class='reason ${entry.tier===2?'different':entry.tier===1?'related':''}'>${escapeHTML(entry.label)}</span><strong>${escapeHTML(entry.ex.name)}</strong><small>${escapeHTML(entry.kit.map(eqName).join(' + '))}${entry.inGym?' · Cadastrado na minha academia':''}${entry.extraLevelWarning?' · Nível avançado':''}</small></span>${icon('chevron','s18')}</button>`
+    ).join('')}</section>`;
+  };
+  return `<div class='sheet-section-head'><h3>Opções para continuar o treino</h3><span>${opts.length} possibilidades*</span></div>
+    <p class='sheet-intro'>Mostramos primeiro movimentos com o mesmo padrão cadastrado. Sugestões do mesmo músculo ficam separadas e não são tratadas como equivalentes. O nível de dificuldade e o equipamento disponível precisam ser avaliados.</p>
+    ${opts.length?groups.map(renderGroup).join(''):`<div class='empty-state'>${icon('info','s28')}<strong>Sem opções com esses filtros</strong><p>Revise aparelhos ocupados, acessórios e equipamentos da sua academia.</p><button data-action='navigate' data-id='gym'>Abrir minha academia</button></div>`}`;
 }
 function renderExecution(ex){return `<div class="sheet-section-head"><h3>Passo a passo</h3><span>${ex.steps.length} etapas</span></div>${ex.steps.map((s,i)=>`<div class="step-row"><span class="step-number">${i+1}</span><span>${escapeHTML(s)}</span></div>`).join('')}<div class="sheet-section-head"><h3>Músculos e padrão</h3></div><p class="sheet-intro"><strong>Principais:</strong> ${escapeHTML(ex.primary.map(mName).join(', '))}.<br><strong>Secundários:</strong> ${escapeHTML(ex.secondary.map(mName).join(', ')||'Não especificados')}.<br><strong>Movimento:</strong> ${escapeHTML(pName(ex.pattern))}.</p>`;}
 function exerciseSheet(ex){
@@ -220,7 +224,7 @@ function exerciseSheet(ex){
    ${tab==='alternatives'?renderAlternatives(ex):renderExecution(ex)}
    <div class="sheet-section-head"><h3>Equipamentos necessários</h3><span>${ex.setups.length} ${ex.setups.length>1?'opções':'opção'}</span></div>
    ${ex.setups.map(kitCard).join('')}
-   <div class="notice">${icon('info')}<span>* Status baseado em marcações manuais, não em disponibilidade em tempo real. Exercícios do mesmo músculo não são necessariamente equivalentes; respeite sua técnica e limitações.</span></div>
+   <div class="notice">${icon('info')}<span>* Status baseado em marcações manuais, não em disponibilidade em tempo real. As sugestões são comparações do catálogo, não substituições biomecânicas validadas ou prescrição individual; respeite suas limitações e orientação profissional.</span></div>
  </div><div class="sheet-footer"><button class="primary-button full" data-action="favorite" data-id="${ex.id}">${icon('heart')} ${fav?'Remover dos salvos':'Salvar exercício'}</button></div>`;
 }
 function equipmentSheet(eq){
