@@ -1,0 +1,20 @@
+{
+  "_nota": "DOCUMENTAÇÃO, NÃO CARREGADA PELO APLICATIVO. Todos os campos e a autorização precisam ser conferidos antes de publicar.",
+  "asset_exemplo_NAO_PUBLICAR": {
+    "id": "leg45_exemplo",
+    "kind": "equipment",
+    "path": "media/leg45-exemplo.webp",
+    "alt": "Fotografia real e verificada de um leg press 45 graus",
+    "status": "pending",
+    "license": {
+      "licenseId": "PREENCHER",
+      "licenseUrl": "https://exemplo.invalid/licenca",
+      "sourceUrl": "https://exemplo.invalid/foto",
+      "author": "PREENCHER",
+      "credit": "PREENCHER",
+      "checkedAt": "AAAA-MM-DD",
+      "approvedBy": "PREENCHER",
+      "approvalNote": "PREENCHER"
+    }
+  }
+}

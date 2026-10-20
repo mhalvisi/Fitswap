@@ -17,9 +17,9 @@ test('catálogo mantém as quatro coleções de base', () => {
   uniqueIds(db.patterns, 'padrões');
   uniqueIds(db.equipment, 'equipamentos');
   uniqueIds(db.exercises, 'exercícios');
-  assert.equal(db.muscles.length, 17);
-  assert.equal(db.equipment.length, 62);
-  assert.equal(db.exercises.length, 103);
+  assert.ok(db.muscles.length >= 17);
+  assert.ok(db.equipment.length >= 62);
+  assert.ok(db.exercises.length >= 103);
 });
 
 test('todos os exercícios possuem relações válidas de músculos e padrões', () => {

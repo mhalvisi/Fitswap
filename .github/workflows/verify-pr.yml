@@ -1,0 +1,18 @@
+name: Validar FitSwap 1.1
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/catalogo-visual-1-1]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run build

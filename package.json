@@ -1,11 +1,11 @@
 {
   "name": "fitswap-mobile",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "FitSwap — aplicativo web mobile para explorar exercícios e substituir equipamentos ocupados.",
   "type": "module",
   "scripts": {
-    "test": "node --check app.js && node --check dados.js && node --check sw.js && node --test tests/catalog.test.mjs",
+    "test": "node --check app.js && node --check dados.js && node --check catalogo/midia.js && node --check catalogo/modelos.js && node --check sw.js && node --test tests/*.test.mjs",
     "build": "node scripts/build.mjs",
     "start": "node scripts/serve.mjs"
   },

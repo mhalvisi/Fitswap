@@ -20,6 +20,36 @@ const eqName = id => equipment[id]?.name ?? id;
 const mName = id => muscles[id]?.name ?? id;
 const pName = id => patterns[id]?.name ?? id;
 const allExercises = sorted(DB.exercises), allEquipment = sorted(DB.equipment);
+const MEDIA = window.FITSWAP_MEDIA || {assets:[], equipment:{}, exercises:{}};
+const allowedMediaPath = path => /^media\/[a-z0-9][a-z0-9/_\-]*\.(webp|avif|png|jpe?g)$/i.test(path || '') || /^https:\/\/thumb\.wikimedia\.org\/wikipedia\/commons\/thumb\/[a-f0-9]\/[a-f0-9]{2}\/[a-z0-9%_.()\-]+\/[0-9]+px-[a-z0-9%_.()\-]+\.(webp|png|jpe?g)$/i.test(path || '');
+const MODELS = Array.isArray(window.FITSWAP_MODELS)?window.FITSWAP_MODELS:[];
+const mediaAssets = Object.fromEntries((MEDIA.assets || []).map(asset=>[asset.id, asset]));
+const modelsByEquipment = MODELS.reduce((acc,model)=>{ (acc[model.equipmentId] ||= []).push(model);return acc; },{});
+function authorizedMedia(kind,id){
+  const group=kind==='equipment'?MEDIA.equipment:MEDIA.exercises;
+  return (group?.[id] || []).map(assetId=>mediaAssets[assetId]).filter(asset=>
+    asset && asset.status==='approved' && asset.license?.approvedBy &&
+    allowedMediaPath(asset.path) &&
+    /^https:\/\//.test(asset.license?.sourceUrl || '') && /^https:\/\//.test(asset.license?.licenseUrl || '')
+  );
+}
+function mediaThumbnail(kind,id, fallbackIcon='gym'){
+  const first=authorizedMedia(kind,id)[0];
+  return first
+    ? `<img class="media-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHTML(first.path)}" alt="${escapeHTML(first.alt)}" title="${escapeHTML(first.license.credit)} — veja detalhes para fonte e licença" data-fallback-icon="${escapeHTML(fallbackIcon)}">`
+    : `<span class="media-placeholder-symbol">${icon(fallbackIcon,'s28')}</span>`;
+}
+function mediaGallery(kind,id,label){
+  const items=authorizedMedia(kind,id);
+  if(!items.length) return `<div class="media-gallery media-gallery-empty" role="status">
+    <div class="media-gallery-symbol">${icon(kind==='equipment'?'gym':'target','s32')}</div>
+    <strong>Imagem em preparação</strong><span>Fotografias e demonstrações serão adicionadas após revisão das licenças.</span>
+  </div>`;
+  return `<div class="media-gallery media-gallery-scroll" role="region" aria-label="Galeria de ${escapeHTML(label)}" tabindex="0">${items.map(a=>
+    `<figure class="media-figure"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHTML(a.path)}" alt="${escapeHTML(a.alt)}" data-gallery-img="1"><figcaption><span>${escapeHTML(a.license.credit || a.license.author)}</span><nav class="media-credits" aria-label="Créditos da imagem"><a href="${escapeHTML(a.license.sourceUrl)}" target="_blank" rel="noopener noreferrer">Fonte ↗</a><a href="${escapeHTML(a.license.licenseUrl)}" target="_blank" rel="noopener noreferrer">Licença ↗</a></nav></figcaption><div class="media-photo-note">${escapeHTML(a.license.modifications || "Arquivo original sem alterações")} · Foto ilustrativa; fabricantes não patrocinam o FitSwap. ${a.delivery==='external-preview'?'Conexão necessária para visualizar esta foto.':''}</div></figure>`
+  ).join('')}</div>`;
+}
+
 const commonEq = new Set(['halter','barra','barra_w','rack','banco_reto','banco_incl','smith','leg45','leg_h','extensora','flexora_mesa','flexora_sent','abdutora','adutora','pulldown','row_seated','crossover','polia_alta','polia_baixa','chest','peck','shoulder','barra_fixa','colchonete','step','pant_sent']);
 const navItems = [{id:'home',label:'Início',icon:'home'},{id:'explore',label:'Explorar',icon:'search'},{id:'gym',label:'Academia',icon:'gym'},{id:'saved',label:'Salvos',icon:'heart'}];
 const modeItems = [{id:'muscle',label:'Músculos'},{id:'equipment',label:'Máquinas'},{id:'exercise',label:'Exercícios'}];
@@ -41,7 +71,7 @@ function hasGymKit(kit){return kit.every(id=>!state.gymOnly || state.gym.has(id)
 function kitAvailable(kit){return hasGymKit(kit) && kit.every(id=>!state.busy.has(id));}
 function exAvailable(ex){return ex.setups.some(kitAvailable);}
 function exText(ex){return [ex.name, pName(ex.pattern), ...ex.primary.map(mName),...ex.secondary.map(mName),...ex.setups.flat().map(id=>[eqName(id),...(equipment[id]?.aliases||[])].join(' '))].join(' ');}
-function equipmentText(eq){return [eq.name,eq.group,...eq.aliases].join(' ');}
+function equipmentText(eq){return [eq.name,eq.group,...eq.aliases,...(modelsByEquipment[eq.id]||[]).flatMap(m=>[m.brand,m.model,...(m.aliases||[])])].join(' ');}
 function relatedToEq(id){return allExercises.filter(ex=>ex.setups.some(kit=>kit.includes(id)));}
 function excerpt(ex){return [...new Set(ex.setups.flat().map(eqName))].slice(0,2).join(' · ');}
 function kitSignature(kit){return [...kit].sort().join('+');}
@@ -77,12 +107,12 @@ function status(ex){
 function visualFor(ex){let i='gym';const pat=normalize(pName(ex.pattern));if(pat.includes('empurrar'))i='bolt'; else if(pat.includes('extens')||pat.includes('agachar'))i='target'; else if(pat.includes('puxar')||pat.includes('remar'))i='swap';return icon(i,'s28');}
 function exerciseCard(ex, showStatus=true){
   const fav=state.favorites.has(ex.id);
-  return `<article class="feed-card"><div class="visual">${visualFor(ex)}</div><button class="content" data-action="exercise" data-id="${ex.id}" style="display:block;background:transparent;text-align:left;padding:0;border:0"><div class="eyebrow">${escapeHTML(ex.primary.map(mName).join(' · '))}</div><h3 class="name">${escapeHTML(ex.name)}</h3><div class="meta">${escapeHTML(excerpt(ex))}</div>${showStatus?`<div style="margin-top:7px">${status(ex)}</div>`:''}</button><div class="trailing"><button class="heart-button ${fav?'active':''}" data-action="favorite" data-id="${ex.id}" aria-label="${fav?'Remover dos salvos':'Salvar'} ${escapeHTML(ex.name)}">${icon('heart')}</button><button class="chev-btn" data-action="exercise" data-id="${ex.id}" aria-label="Abrir ${escapeHTML(ex.name)}">${icon('chevron','s18')}</button></div></article>`;
+  return `<article class="feed-card"><div class="visual media-visual">${mediaThumbnail('exercise',ex.id,'target')}</div><button class="content" data-action="exercise" data-id="${ex.id}" style="display:block;background:transparent;text-align:left;padding:0;border:0"><div class="eyebrow">${escapeHTML(ex.primary.map(mName).join(' · '))}</div><h3 class="name">${escapeHTML(ex.name)}</h3><div class="meta">${escapeHTML(excerpt(ex))}</div>${showStatus?`<div style="margin-top:7px">${status(ex)}</div>`:''}</button><div class="trailing"><button class="heart-button ${fav?'active':''}" data-action="favorite" data-id="${ex.id}" aria-label="${fav?'Remover dos salvos':'Salvar'} ${escapeHTML(ex.name)}">${icon('heart')}</button><button class="chev-btn" data-action="exercise" data-id="${ex.id}" aria-label="Abrir ${escapeHTML(ex.name)}">${icon('chevron','s18')}</button></div></article>`;
 }
 function equipmentCard(eq){
   const related=relatedToEq(eq.id).length;
   const busy=state.busy.has(eq.id),included=state.gym.has(eq.id);
-  return `<article class="feed-card"><div class="visual ${busy?'orange':'green'}">${icon('gym','s28')}</div><button class="content" style="display:block;background:none;text-align:left;padding:0" data-action="equipment" data-id="${eq.id}"><div class="eyebrow">${escapeHTML(eq.group)}</div><h3 class="name">${escapeHTML(eq.name)}</h3><div class="meta">${related} exercícios · ${escapeHTML(eq.aliases?.[0]||'Equipamento')}</div><div style="margin-top:7px"><span class="status-chip ${busy?'warn':included?'':'neutral'}">${busy?'Ocupado*':included?'Na minha academia':'Ver exercícios'}</span></div></button><button class="chev-btn" data-action="equipment" data-id="${eq.id}" aria-label="Detalhes de ${escapeHTML(eq.name)}">${icon('chevron','s18')}</button></article>`;
+  return `<article class="feed-card"><div class="visual media-visual ${busy?'orange':'green'}">${mediaThumbnail('equipment',eq.id,'gym')}</div><button class="content" style="display:block;background:none;text-align:left;padding:0" data-action="equipment" data-id="${eq.id}"><div class="eyebrow">${escapeHTML(eq.group)}</div><h3 class="name">${escapeHTML(eq.name)}</h3><div class="meta">${related} exercícios · ${escapeHTML(eq.aliases?.[0]||'Equipamento')}</div><div style="margin-top:7px"><span class="status-chip ${busy?'warn':included?'':'neutral'}">${busy?'Ocupado*':included?'Na minha academia':'Ver exercícios'}</span></div></button><button class="chev-btn" data-action="equipment" data-id="${eq.id}" aria-label="Detalhes de ${escapeHTML(eq.name)}">${icon('chevron','s18')}</button></article>`;
 }
 function renderHome(){
   const topMuscles=['quadriceps','peito','costas','gluteos','biceps','triceps','posterior','ombro_lat'].map(id=>muscles[id]).filter(Boolean);
@@ -185,7 +215,7 @@ function renderAlternatives(ex){
 function renderExecution(ex){return `<div class="sheet-section-head"><h3>Passo a passo</h3><span>${ex.steps.length} etapas</span></div>${ex.steps.map((s,i)=>`<div class="step-row"><span class="step-number">${i+1}</span><span>${escapeHTML(s)}</span></div>`).join('')}<div class="sheet-section-head"><h3>Músculos e padrão</h3></div><p class="sheet-intro"><strong>Principais:</strong> ${escapeHTML(ex.primary.map(mName).join(', '))}.<br><strong>Secundários:</strong> ${escapeHTML(ex.secondary.map(mName).join(', ')||'Não especificados')}.<br><strong>Movimento:</strong> ${escapeHTML(pName(ex.pattern))}.</p>`;}
 function exerciseSheet(ex){
  const tab=state.sheet.tab, fav=state.favorites.has(ex.id);
- return `${sheetHead('DETALHES DO EXERCÍCIO',ex.name)}<div class="sheet-scroll"><div class="detail-meta">${ex.primary.map(m=>`<span class="detail-tag green">${escapeHTML(mName(m))}</span>`).join('')}<span class="detail-tag">${escapeHTML(ex.level)}</span><span class="detail-tag">${escapeHTML(ex.kind)}</span></div>
+ return `${sheetHead('DETALHES DO EXERCÍCIO',ex.name)}<div class="sheet-scroll">${mediaGallery('exercise',ex.id,ex.name)}<div class="detail-meta">${ex.primary.map(m=>`<span class="detail-tag green">${escapeHTML(mName(m))}</span>`).join('')}<span class="detail-tag">${escapeHTML(ex.level)}</span><span class="detail-tag">${escapeHTML(ex.kind)}</span></div>
    <div class="detail-tabs" role="tablist"><button class="${tab==='alternatives'?'active':''}" data-action="detail-tab" data-id="alternatives" aria-selected="${tab==='alternatives'}">${icon('swap','s18')} Alternativas</button><button class="${tab==='steps'?'active':''}" data-action="detail-tab" data-id="steps" aria-selected="${tab==='steps'}">${icon('list','s18')} Como fazer</button></div>
    ${tab==='alternatives'?renderAlternatives(ex):renderExecution(ex)}
    <div class="sheet-section-head"><h3>Equipamentos necessários</h3><span>${ex.setups.length} ${ex.setups.length>1?'opções':'opção'}</span></div>
@@ -195,9 +225,9 @@ function exerciseSheet(ex){
 }
 function equipmentSheet(eq){
  const ex=relatedToEq(eq.id);
- return `${sheetHead(escapeHTML(eq.group).toUpperCase(),eq.name)}<div class="sheet-scroll">
+ return `${sheetHead(escapeHTML(eq.group).toUpperCase(),eq.name)}<div class="sheet-scroll">${mediaGallery('equipment',eq.id,eq.name)}
  <div class="detail-meta">${eq.aliases?.length?`<span class="detail-tag">Também: ${escapeHTML(eq.aliases.join(' · '))}</span>`:''}<span class="detail-tag green">${ex.length} exercícios</span></div>
- <div class="equip-status"><div class="equip-status-head"><strong>Este equipamento</strong><span class="status-chip ${state.busy.has(eq.id)?'warn':'neutral'}">${state.busy.has(eq.id)?'Ocupado*':'Sem ocupação marcada'}</span></div>${eqActions(eq.id)}</div>
+ ${(modelsByEquipment[eq.id]||[]).length?`<div class="model-list"><strong>Modelos cadastrados</strong>${modelsByEquipment[eq.id].map(m=>`<div>${escapeHTML(m.brand)} · ${escapeHTML(m.model)}</div>`).join('')}</div>`:''}<div class="equip-status"><div class="equip-status-head"><strong>Este equipamento</strong><span class="status-chip ${state.busy.has(eq.id)?'warn':'neutral'}">${state.busy.has(eq.id)?'Ocupado*':'Sem ocupação marcada'}</span></div>${eqActions(eq.id)}</div>
  <div class="sheet-section-head"><h3>O que dá para treinar aqui?</h3><span>${ex.length} movimentos</span></div>
  ${ex.map((e,i)=>`<button class="substitute" data-action="exercise" data-id="${e.id}"><span class="sub-rank">${i+1}</span><span class="sub-body"><strong>${escapeHTML(e.name)}</strong><small>${escapeHTML(e.primary.map(mName).join(' · '))} · ${escapeHTML(pName(e.pattern))}</small></span>${icon('chevron','s18')}</button>`).join('')}
  <div class="notice">${icon('info')}<span>Os exercícios indicados são relacionados ao tipo de equipamento e precisam ser realizados com a configuração adequada. O status de ocupação é manual.</span></div></div>`;
@@ -259,6 +289,23 @@ document.addEventListener('input',event=>{
  if(kind==='quick'){state.quickQuery=event.target.value;q('#quick-results').innerHTML=quickResults();}
 });
 root.addEventListener('click',event=>{if(event.target.classList.contains('sheet-overlay'))closeSheet();});
+document.addEventListener('error', event=>{
+  const target=event.target;
+  if(!(target instanceof HTMLImageElement))return;
+  if(target.matches('.media-thumb')){
+    const fallback=document.createElement('span');
+    fallback.className='media-placeholder-symbol';
+    // Render an existing local SVG symbol rather than showing a broken photo.
+    fallback.innerHTML=icon('gym','s28');
+    target.replaceWith(fallback);
+  } else if(target.matches('[data-gallery-img]')){
+    const text=document.createElement('div');
+    text.className='media-load-error';
+    text.textContent='Imagem temporariamente indisponível';
+    target.replaceWith(text);
+  }
+},true);
+
 document.addEventListener('keydown',event=>{
  if(event.key==='Escape' && state.sheet){closeSheet();return;}
  if(event.key==='Tab' && state.sheet){const nodes=[...root.querySelectorAll('button:not([disabled]),input:not([disabled])')];if(!nodes.length)return;const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
@@ -273,5 +320,5 @@ root.addEventListener('touchstart',e=>{if(e.target.closest('#sheet-handle'))shee
 root.addEventListener('touchend',e=>{if(sheetGesture){if(e.changedTouches[0].clientY-sheetGesture.y>90)closeSheet();sheetGesture=null;}},{passive:true});
 renderScreen();
 // API de testes locais, sem chamadas remotas.
-window.FitSwapMobileTest={DB,state,filteredExplore,filteredGym,availableAlternatives,kitAvailable,relatedToEq,navigate,openSheet,closeSheet};
+window.FitSwapMobileTest={DB,state,filteredExplore,filteredGym,availableAlternatives,kitAvailable,relatedToEq,navigate,openSheet,closeSheet,authorizedMedia,modelsByEquipment};
 })();

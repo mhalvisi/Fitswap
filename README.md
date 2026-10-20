@@ -1,8 +1,16 @@
-# FitSwap Mobile 1.0
+## Catálogo fotográfico — lote 01 (visualização online)
+
+Seis fotografias do Wikimedia Commons aparecem nos detalhes e cards dos equipamentos correspondentes; todas têm autoria, link da fonte, licença individual e status editorial aprovado. **Os arquivos não estão armazenados localmente**: nesta primeira integração, as miniaturas são carregadas diretamente de `https://thumb.wikimedia.org/`; por isso exigem internet e podem ficar indisponíveis se a fonte externa falhar. Ícones locais substituem imagens ausentes. Exercícios sem fotografia mantêm o estado de imagem em preparação.
+
+Três arquivos aprovados condicionalmente continuam **não publicados**, pelos motivos específicos registrados em `catalogo/lote01-direitos.json`: FS-IMG-002 (subtipo), FS-IMG-004 (leg press sem subtipo validado) e FS-IMG-009 (pessoa ao fundo). A imagem de máquina Smith contém marca incidental; o FitSwap não é parceiro de fabricantes. Imagens sob CC BY-SA 4.0 exigem crédito, indicação de modificações e link para licença, exibidos na galeria. Os arquivos de imagem deverão ser incorporados localmente quando o ambiente de distribuição permitir transferência verificada, sem alterar as fontes e licenças aprovadas.
+
+# FitSwap Mobile 1.1 (branch de desenvolvimento)
+
+> **PARADA PARA APROVAÇÃO:** interface e infraestrutura de fotos preparadas, mas nenhuma fotografia externa foi importada ou publicada. A versão 1.0 em `main` permanece intacta. Ver `catalogo/GUIA-DE-CADASTRO.md`.
 
 **Treine sem esperar.** Aplicativo web mobile para buscar exercícios por **músculo**, **equipamento** ou **exercício**, encontrar alternativas quando a máquina estiver ocupada e configurar os equipamentos da sua academia.
 
-![Quatro telas do FitSwap Mobile](docs/preview.jpg)
+![Quatro telas do FitSwap Mobile](docs/preview.png)
 
 ## Recursos
 
@@ -80,7 +88,7 @@ O projeto utiliza caminhos relativos, compatíveis com o endereço do repositór
 fitswap/
 ├── .github/workflows/pages.yml   # Publicação automática no Pages
 ├── icons/                        # Ícones PWA
-├── docs/preview.jpg              # Prévia das telas
+├── docs/preview.png              # Prévia das telas
 ├── scripts/build.mjs             # Gera o site publicável
 ├── scripts/serve.mjs             # Servidor de desenvolvimento
 ├── tests/catalog.test.mjs        # Validação do catálogo
@@ -100,3 +108,14 @@ fitswap/
 - **Privacidade:** as marcações e favoritos ficam apenas no navegador do dispositivo.
 - **Dados e conteúdo:** o catálogo é demonstrativo; nomes e instruções precisam de revisão editorial/técnica antes de eventual exploração comercial.
 - **Licenciamento:** nenhum arquivo `LICENSE` foi adicionado automaticamente; a titularidade e a licença para terceiros devem ser definidas antes da abertura de contribuições ou redistribuição.
+
+
+## Novidades na versão 1.1 (em revisão)
+
+- Cards, detalhes e galeria preparados para mostrar **imagens autorizadas** com alt text, autoria e link para a fonte.
+- Registro `catalogo/midia.js` com bloqueio por status `approved`, licença verificável e URLs de fonte e licença.
+- Cadastro `catalogo/modelos.js` para marcas e modelos verificados sem duplicar os exercícios.
+- Galeria informa explicitamente quando a foto ainda não existe; não há conteúdo visual externo não autorizado.
+- Arquivos em `media/` serão empacotados para publicação somente quando houver autorização editorial.
+- Testes novos evitam mídia sem registro de direitos e validam referências e padrões de nomes.
+- A expansão de exercícios (1.2) e substituições aprimoradas (1.3) **ainda não foram implementadas**, pois aguardamos a escolha de fontes e aprovação de uso.

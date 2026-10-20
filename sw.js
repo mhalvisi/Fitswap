@@ -1,6 +1,6 @@
 /* FitSwap PWA: cache de arquivos locais para funcionar offline. */
-const CACHE = 'fitswap-mobile-1.0-pages-v1';
-const ASSETS = ['./', './index.html', './styles.css', './dados.js', './app.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'fitswap-mobile-1.1-lote01-v2';
+const ASSETS = ['./', './index.html', './styles.css', './dados.js', './app.js', './manifest.webmanifest', './catalogo/midia.js', './catalogo/modelos.js', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
