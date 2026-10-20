@@ -40,3 +40,13 @@
 .media-figure figcaption span{white-space:normal;overflow:visible;text-overflow:clip;flex:1 1 140px;line-height:1.4;}
 .media-photo-note{font-size:10px;line-height:1.5;padding:0 12px 12px;color:#647467;}
 .feed-card .media-visual .media-thumb{object-fit:contain;background:#edf4e8;border-radius:13px;}
+
+/* 1.3 beta: categorias de proximidade de movimento */
+.alternative-group{margin:14px 0 22px;padding-top:4px;border-top:1px solid rgba(110,131,99,.2)}
+.alternative-group .sheet-intro{margin:3px 0 10px}
+.substitute .reason.related{background:#fff4d8;color:#805b1d}
+.substitute .reason.different{background:#f2eef8;color:#654979}
+
+/* Único aviso contextual por tela, sem repetição nas imagens ou vídeos. */
+.recommendation-notice{display:flex;align-items:flex-start;gap:9px;padding:11px 12px;margin:8px 0 14px;border:1px solid #d8e3d0;border-radius:12px;background:#f7faf3;color:#40523a;font-size:12px;line-height:1.45}
+.recommendation-notice .icon{flex:none;margin-top:1px}
