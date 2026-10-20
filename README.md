@@ -1,3 +1,11 @@
+## FitSwap 1.2 (beta) — expansão editorial da musculação
+
+O catálogo foi ampliado de **62 para 89 tipos de equipamentos** e de **103 para 175 exercícios** (+27 aparelhos/acessórios e +72 movimentos). Os novos registros incluem identificação em português, termos de busca comuns, músculos, padrão de movimento, configurações completas de equipamentos, nível sugerido e três orientações de execução. Os 17 grupos musculares e os IDs existentes foram preservados para não quebrar favoritos e academias salvas.
+
+**Limitações:** conteúdo de musculação em fase de curadoria; não equivale a prescrição individual, equivalência biomecânica validada, nem aprovação de um profissional de Educação Física. A apresentação de uma alternativa para o mesmo músculo não significa substituição de estímulo idêntico. Fotos continuam disponíveis apenas para os seis equipamentos licenciados do lote 01; os demais utilizam ícones até serem autorizadas imagens reais. Não foram adicionadas fotografias, marcas ou modelos comerciais novos nesta fase.
+
+Consulte `catalogo/EXPANSAO-1-2.md` para escopo, instruções para continuar a curadoria e critérios editoriais.
+
 ## Catálogo fotográfico — lote 01 (visualização online)
 
 Seis fotografias do Wikimedia Commons aparecem nos detalhes e cards dos equipamentos correspondentes; todas têm autoria, link da fonte, licença individual e status editorial aprovado. **Os arquivos não estão armazenados localmente**: nesta primeira integração, as miniaturas são carregadas diretamente de `https://thumb.wikimedia.org/`; por isso exigem internet e podem ficar indisponíveis se a fonte externa falhar. Ícones locais substituem imagens ausentes. Exercícios sem fotografia mantêm o estado de imagem em preparação.

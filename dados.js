@@ -1,6 +1,6 @@
 window.FITSWAP_DATA = {
-  "version": "0.1.0",
-  "note": "Catálogo demonstrativo, não exaustivo nem prescrição; movimentos e substituições requerem avaliação técnica.",
+  "version": "1.2.0-beta.1",
+  "note": "Catálogo editorial demonstrativo; não substitui avaliação profissional. A equivalência de substituições ainda está em revisão biomecânica. Ocupação da academia é marcada manualmente.",
   "muscles": [
     {
       "id": "peito",
@@ -227,6 +227,18 @@ window.FITSWAP_DATA = {
     {
       "id": "pular",
       "name": "Saltos ritmados"
+    },
+    {
+      "id": "extensao_punho",
+      "name": "Extensão do punho"
+    },
+    {
+      "id": "flexao_ombro",
+      "name": "Flexão do ombro"
+    },
+    {
+      "id": "anti_extensao",
+      "name": "Resistência à extensão do tronco"
     }
   ],
   "equipment": [
@@ -236,7 +248,9 @@ window.FITSWAP_DATA = {
       "group": "Pernas",
       "aliases": [
         "leg 45",
-        "leg press inclinado"
+        "leg press inclinado",
+        "leg press 45 graus",
+        "leg press inclinado 45"
       ],
       "description": ""
     },
@@ -246,7 +260,8 @@ window.FITSWAP_DATA = {
       "group": "Pernas",
       "aliases": [
         "leg press sentado",
-        "leg horizontal"
+        "leg horizontal",
+        "leg press horizontal articulado"
       ],
       "description": ""
     },
@@ -266,7 +281,8 @@ window.FITSWAP_DATA = {
       "group": "Pernas",
       "aliases": [
         "hack machine",
-        "agachamento hack"
+        "agachamento hack",
+        "hack squat articulado"
       ],
       "description": ""
     },
@@ -296,7 +312,9 @@ window.FITSWAP_DATA = {
       "aliases": [
         "smith machine",
         "barra guiada",
-        "multi power"
+        "multi power",
+        "multipower",
+        "gaiola smith"
       ],
       "description": ""
     },
@@ -345,7 +363,8 @@ window.FITSWAP_DATA = {
       "group": "Pernas",
       "aliases": [
         "máquina abdutora",
-        "abdutor"
+        "abdutor",
+        "abdução máquina"
       ],
       "description": ""
     },
@@ -355,7 +374,8 @@ window.FITSWAP_DATA = {
       "group": "Pernas",
       "aliases": [
         "máquina adutora",
-        "adutor"
+        "adutor",
+        "adução máquina"
       ],
       "description": ""
     },
@@ -433,7 +453,8 @@ window.FITSWAP_DATA = {
       "aliases": [
         "supino máquina",
         "supino sentado",
-        "press peito"
+        "press peito",
+        "chest press reto"
       ],
       "description": ""
     },
@@ -504,7 +525,8 @@ window.FITSWAP_DATA = {
       "aliases": [
         "pulley dorsal",
         "pulley frente",
-        "lat pulldown"
+        "lat pulldown",
+        "puxador costas"
       ],
       "description": ""
     },
@@ -515,7 +537,9 @@ window.FITSWAP_DATA = {
       "aliases": [
         "remada sentada",
         "remada baixa",
-        "seated row"
+        "seated row",
+        "remada cabo baixo",
+        "remada sentada polia"
       ],
       "description": ""
     },
@@ -525,7 +549,8 @@ window.FITSWAP_DATA = {
       "group": "Costas",
       "aliases": [
         "remada convergente",
-        "remada máquina"
+        "remada máquina",
+        "remada máquina articulada"
       ],
       "description": ""
     },
@@ -565,7 +590,9 @@ window.FITSWAP_DATA = {
       "aliases": [
         "barra fixa assistida",
         "máquina graviton",
-        "pull up assistido"
+        "pull up assistido",
+        "graviton",
+        "barra fixa graviton"
       ],
       "description": ""
     },
@@ -646,7 +673,8 @@ window.FITSWAP_DATA = {
       "aliases": [
         "polia regulável",
         "cabo ajustavel",
-        "functional trainer"
+        "functional trainer",
+        "torre de polia regulável"
       ],
       "description": ""
     },
@@ -676,7 +704,8 @@ window.FITSWAP_DATA = {
       "group": "Pesos livres",
       "aliases": [
         "power rack",
-        "gaiola de agachamento"
+        "gaiola de agachamento",
+        "suporte de agachamento"
       ],
       "description": ""
     },
@@ -756,7 +785,9 @@ window.FITSWAP_DATA = {
       "group": "Bancos",
       "aliases": [
         "banco regulavel",
-        "banco inclinado"
+        "banco inclinado",
+        "banco regulável",
+        "banco 30 graus"
       ],
       "description": ""
     },
@@ -787,7 +818,8 @@ window.FITSWAP_DATA = {
       "group": "Funcional",
       "aliases": [
         "pull up bar",
-        "barra de dominadas"
+        "barra de dominadas",
+        "barra de puxada"
       ],
       "description": ""
     },
@@ -808,7 +840,9 @@ window.FITSWAP_DATA = {
       "aliases": [
         "mini band",
         "theraband",
-        "elástico de treino"
+        "elástico de treino",
+        "miniband",
+        "faixa de resistência"
       ],
       "description": ""
     },
@@ -850,6 +884,294 @@ window.FITSWAP_DATA = {
         "jump rope"
       ],
       "description": ""
+    },
+    {
+      "id": "pulldown_divergent",
+      "name": "Puxada alta articulada divergente",
+      "group": "Costas",
+      "aliases": [
+        "lat pulldown divergente",
+        "pulldown divergente",
+        "puxada isolateral divergente"
+      ],
+      "description": "Braços articulados com trajetória divergente; verificar pegadas e ajustes do fabricante."
+    },
+    {
+      "id": "row_iso",
+      "name": "Remada articulada unilateral",
+      "group": "Costas",
+      "aliases": [
+        "remada isolateral",
+        "iso lateral row",
+        "remada unilateral articulada"
+      ],
+      "description": "Braços independentes para remada horizontal, com possibilidade de trabalho unilateral."
+    },
+    {
+      "id": "row_chest",
+      "name": "Remada com apoio peitoral",
+      "group": "Costas",
+      "aliases": [
+        "chest supported row",
+        "remada apoiada",
+        "remada com peito apoiado"
+      ],
+      "description": "Máquina ou banco de remada com apoio do tórax e trajetória guiada."
+    },
+    {
+      "id": "chest_decline",
+      "name": "Chest press declinado",
+      "group": "Peito",
+      "aliases": [
+        "supino declinado máquina",
+        "decline chest press"
+      ],
+      "description": "Máquina de empurrar com trajetória de supino declinado."
+    },
+    {
+      "id": "dip_press",
+      "name": "Mergulho sentado na máquina",
+      "group": "Peito",
+      "aliases": [
+        "seated dip",
+        "dip press",
+        "maquina de mergulho"
+      ],
+      "description": "Máquina que permite extensão dos cotovelos e movimento de mergulho com apoio sentado."
+    },
+    {
+      "id": "incline_fly_machine",
+      "name": "Crucifixo inclinado na máquina",
+      "group": "Peito",
+      "aliases": [
+        "incline pec fly",
+        "voador inclinado",
+        "crucifixo articulado inclinado"
+      ],
+      "description": "Máquina específica para adução dos braços em plano inclinado."
+    },
+    {
+      "id": "shoulder_iso",
+      "name": "Desenvolvimento articulado independente",
+      "group": "Ombros",
+      "aliases": [
+        "iso lateral shoulder press",
+        "shoulder press isolateral"
+      ],
+      "description": "Máquina para desenvolvimento com braços de movimento independente."
+    },
+    {
+      "id": "front_machine",
+      "name": "Elevação frontal na máquina",
+      "group": "Ombros",
+      "aliases": [
+        "front raise machine",
+        "elevacao frontal guiada"
+      ],
+      "description": "Máquina para elevação frontal dos braços com resistência guiada."
+    },
+    {
+      "id": "triceps_overhead_machine",
+      "name": "Tríceps acima da cabeça na máquina",
+      "group": "Braços",
+      "aliases": [
+        "overhead triceps machine",
+        "triceps overhead articulado"
+      ],
+      "description": "Máquina dedicada à extensão dos cotovelos com braços elevados."
+    },
+    {
+      "id": "forearm_roller",
+      "name": "Rolo para antebraços",
+      "group": "Braços",
+      "aliases": [
+        "wrist roller",
+        "rolo de punho"
+      ],
+      "description": "Rolo com corda e carga para movimentos controlados dos punhos."
+    },
+    {
+      "id": "nordic_bench",
+      "name": "Banco de flexão nórdica",
+      "group": "Pernas",
+      "aliases": [
+        "nordic curl bench",
+        "nordic bench",
+        "ancoragem nordic"
+      ],
+      "description": "Banco com fixação das pernas para progressões de flexão nórdica."
+    },
+    {
+      "id": "calf_donkey",
+      "name": "Máquina de panturrilha donkey",
+      "group": "Pernas",
+      "aliases": [
+        "donkey calf raise",
+        "donkey machine"
+      ],
+      "description": "Máquina para flexão plantar com o tronco inclinado."
+    },
+    {
+      "id": "v_squat",
+      "name": "Máquina de agachamento V-squat",
+      "group": "Pernas",
+      "aliases": [
+        "v squat machine",
+        "agachamento v",
+        "agachamento articulado v"
+      ],
+      "description": "Máquina de agachamento com trajetória guiada em V."
+    },
+    {
+      "id": "glute_abduction_stand",
+      "name": "Abdutora em pé",
+      "group": "Pernas",
+      "aliases": [
+        "standing hip abductor",
+        "abducao em pe maquina"
+      ],
+      "description": "Máquina para abdução de quadril na posição em pé."
+    },
+    {
+      "id": "leg_press_uni",
+      "name": "Leg press unilateral dedicado",
+      "group": "Pernas",
+      "aliases": [
+        "single leg press",
+        "leg press individual",
+        "leg press unilateral maquina"
+      ],
+      "description": "Máquina de leg press com plataforma independente ou estação dedicada ao trabalho unilateral."
+    },
+    {
+      "id": "rope_triceps",
+      "name": "Corda para polia",
+      "group": "Acessórios",
+      "aliases": [
+        "corda de triceps",
+        "rope attachment",
+        "puxador corda"
+      ],
+      "description": "Acessório de corda usado em exercícios de cabo; requer uma polia compatível."
+    },
+    {
+      "id": "straight_handle",
+      "name": "Barra reta para polia",
+      "group": "Acessórios",
+      "aliases": [
+        "puxador reto",
+        "straight bar attachment",
+        "barra de polia"
+      ],
+      "description": "Puxador reto removível de máquinas de cabo."
+    },
+    {
+      "id": "v_handle",
+      "name": "Pegador triangular para remada",
+      "group": "Acessórios",
+      "aliases": [
+        "triangulo de remada",
+        "v grip",
+        "pegador fechado"
+      ],
+      "description": "Acessório de pegada neutra para sistemas de cabo."
+    },
+    {
+      "id": "ankle_strap",
+      "name": "Tornozeleira para polia",
+      "group": "Acessórios",
+      "aliases": [
+        "caneleira de polia",
+        "ankle cuff",
+        "tornozeleira cabo"
+      ],
+      "description": "Acessório de fixação ao tornozelo para exercícios em sistemas de cabo."
+    },
+    {
+      "id": "weight_plate",
+      "name": "Anilha avulsa",
+      "group": "Pesos livres",
+      "aliases": [
+        "disco de peso",
+        "weight plate",
+        "anilhas"
+      ],
+      "description": "Disco de carga usado em barras, máquinas ou exercícios de resistência manual."
+    },
+    {
+      "id": "medicine_ball",
+      "name": "Bola medicinal",
+      "group": "Funcional",
+      "aliases": [
+        "medicine ball",
+        "bola com peso",
+        "bola de treinamento"
+      ],
+      "description": "Bola com carga destinada a exercícios de força e controle de tronco."
+    },
+    {
+      "id": "ab_wheel",
+      "name": "Roda abdominal",
+      "group": "Core",
+      "aliases": [
+        "ab roller",
+        "roda de abdomen",
+        "rolo abdominal"
+      ],
+      "description": "Roda com pegadores para extensão e retorno controlados do tronco."
+    },
+    {
+      "id": "decline_bench",
+      "name": "Banco declinado",
+      "group": "Bancos",
+      "aliases": [
+        "banco de supino declinado",
+        "decline bench"
+      ],
+      "description": "Banco ajustado para supino em ângulo declinado."
+    },
+    {
+      "id": "ab_bench",
+      "name": "Banco abdominal declinado",
+      "group": "Bancos",
+      "aliases": [
+        "sit up bench",
+        "banco de abdominal declinado"
+      ],
+      "description": "Banco com apoio dos pés para trabalho de flexão do tronco."
+    },
+    {
+      "id": "bosu",
+      "name": "Bola de equilíbrio tipo BOSU",
+      "group": "Funcional",
+      "aliases": [
+        "balance trainer",
+        "meia bola de equilibrio",
+        "bosu ball"
+      ],
+      "description": "Plataforma instável sem marca ou fabricante específico associado."
+    },
+    {
+      "id": "sandbag",
+      "name": "Saco de areia para treino",
+      "group": "Funcional",
+      "aliases": [
+        "sandbag",
+        "power bag",
+        "bolsa de areia"
+      ],
+      "description": "Bolsa de treino com carga ajustada para movimentos de resistência."
+    },
+    {
+      "id": "pushup_handles",
+      "name": "Apoios para flexões",
+      "group": "Funcional",
+      "aliases": [
+        "push up bars",
+        "pegador de flexao",
+        "paraletes baixas"
+      ],
+      "description": "Apoios baixos para mãos durante flexões no solo."
     }
   ],
   "exercises": [
@@ -3320,6 +3642,1681 @@ window.FITSWAP_DATA = {
         "Posicione mãos e joelhos no solo",
         "Estenda braço e perna opostos sem girar o tronco",
         "Retorne e alterne os lados"
+      ]
+    },
+    {
+      "id": "puxada_divergente",
+      "name": "Puxada alta divergente bilateral",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps",
+        "ombro_post"
+      ],
+      "pattern": "puxar_vertical",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "pulldown_divergent"
+        ]
+      ],
+      "steps": [
+        "Ajuste banco e apoios para manter o tronco estável.",
+        "Puxe os braços articulados em direção à parte superior do tórax sem inclinar excessivamente o corpo.",
+        "Deixe os braços retornarem com controle até alongamento confortável."
+      ]
+    },
+    {
+      "id": "puxada_divergente_uni",
+      "name": "Puxada alta divergente unilateral",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "puxar_vertical",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "pulldown_divergent"
+        ]
+      ],
+      "steps": [
+        "Ajuste o assento e use apenas um braço articulado por vez.",
+        "Puxe o pegador mantendo os ombros nivelados e o tronco estável.",
+        "Retorne lentamente sem rodar o tronco para compensar."
+      ]
+    },
+    {
+      "id": "remada_isolateral",
+      "name": "Remada articulada isolateral",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps",
+        "ombro_post"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "row_iso"
+        ]
+      ],
+      "steps": [
+        "Ajuste o assento e apoie o tórax quando a máquina permitir.",
+        "Traga os pegadores em direção ao tronco com os cotovelos próximos à trajetória prevista.",
+        "Estenda os braços devagar sem perder a posição do corpo."
+      ]
+    },
+    {
+      "id": "remada_isolateral_uni",
+      "name": "Remada articulada com um braço",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "row_iso"
+        ]
+      ],
+      "steps": [
+        "Mantenha o tórax apoiado e selecione um braço de cada vez.",
+        "Puxe o pegador sem girar a cintura em direção à carga.",
+        "Volte lentamente até estender o braço sem soltar o controle."
+      ]
+    },
+    {
+      "id": "remada_apoio_peito",
+      "name": "Remada na máquina com apoio peitoral",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps",
+        "ombro_post"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "row_chest"
+        ]
+      ],
+      "steps": [
+        "Ajuste o apoio para manter o peito estável durante toda a série.",
+        "Puxe as alças em direção às costelas sem projetar o pescoço.",
+        "Retorne com as escápulas controladas e sem levantar o tórax do apoio."
+      ]
+    },
+    {
+      "id": "remada_halter_apoio_incl",
+      "name": "Remada com halteres apoiado no banco inclinado",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps",
+        "ombro_post"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter",
+          "banco_incl"
+        ]
+      ],
+      "steps": [
+        "Deite o peito sobre banco inclinado com pés bem apoiados.",
+        "Puxe os halteres ao lado do tronco sem levantar a cabeça.",
+        "Estenda os braços de maneira controlada mantendo apoio do peito."
+      ]
+    },
+    {
+      "id": "puxada_unilateral_polia",
+      "name": "Puxada unilateral na polia alta",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "puxar_vertical",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "polia_alta"
+        ]
+      ],
+      "steps": [
+        "Ajuste pegador e distância para evitar o tronco torcido.",
+        "Puxe o cotovelo para baixo em direção ao quadril mantendo o ombro controlado.",
+        "Retorne o braço de modo lento sem inclinar o corpo."
+      ]
+    },
+    {
+      "id": "remada_baixa_aberta",
+      "name": "Remada baixa com pegada aberta",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps",
+        "ombro_post"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "row_seated"
+        ]
+      ],
+      "steps": [
+        "Sente-se com coluna estável e use pegador de abertura compatível.",
+        "Traga o pegador ao tronco mantendo cotovelos abertos de forma confortável.",
+        "Devolva o peso sem usar balanço do tronco."
+      ]
+    },
+    {
+      "id": "barra_fixa_neutra",
+      "name": "Barra fixa com pegada neutra",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "puxar_vertical",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "barra_fixa"
+        ]
+      ],
+      "steps": [
+        "Use uma barra com pegadores paralelos e sustente o corpo com controle.",
+        "Eleve o peito em direção aos pegadores sem forçar o pescoço.",
+        "Desça devagar até extensão confortável dos cotovelos."
+      ]
+    },
+    {
+      "id": "pullover_halter",
+      "name": "Pullover com halter no banco",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "peito",
+        "triceps"
+      ],
+      "pattern": "extensao_ombro",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "halter",
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Deite-se no banco e segure o halter com pegada segura acima do tórax.",
+        "Leve o halter para trás dentro de amplitude confortável sem arquear excessivamente a lombar.",
+        "Retorne acima do tórax mantendo o movimento controlado."
+      ]
+    },
+    {
+      "id": "supino_declinado_halter",
+      "name": "Supino declinado com halteres",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "halter",
+          "decline_bench"
+        ]
+      ],
+      "steps": [
+        "Prenda os pés e deite no banco declinado com ajuda para posicionar os halteres.",
+        "Empurre os halteres em trajetória estável sem chocar os pesos.",
+        "Desça lentamente até amplitude confortável para os ombros."
+      ]
+    },
+    {
+      "id": "supino_declinado_barra",
+      "name": "Supino declinado com barra",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "barra",
+          "decline_bench"
+        ]
+      ],
+      "steps": [
+        "Ajuste o banco declinado em estação segura com apoio e travas adequados.",
+        "Desça a barra de forma controlada à região inferior do tórax.",
+        "Empurre mantendo cotovelos e punhos alinhados e use observador quando necessário."
+      ]
+    },
+    {
+      "id": "chest_press_declinado",
+      "name": "Chest press declinado na máquina",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "chest_decline"
+        ]
+      ],
+      "steps": [
+        "Regule assento e alcance dos pegadores segundo a máquina.",
+        "Empurre mantendo o tórax apoiado e o movimento simétrico.",
+        "Retorne à posição inicial sem deixar a carga bater."
+      ]
+    },
+    {
+      "id": "mergulho_maquina",
+      "name": "Mergulho sentado na máquina",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [
+        "peito",
+        "ombro_ant"
+      ],
+      "pattern": "extensao_cotovelo",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "dip_press"
+        ]
+      ],
+      "steps": [
+        "Ajuste o assento e apoie as costas conforme os encostos disponíveis.",
+        "Empurre os pegadores para baixo por extensão dos cotovelos.",
+        "Volte devagar sem perder o contato com os apoios."
+      ]
+    },
+    {
+      "id": "crucifixo_inclinado_maquina",
+      "name": "Crucifixo inclinado na máquina",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "aducao_peito",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "incline_fly_machine"
+        ]
+      ],
+      "steps": [
+        "Ajuste assento e pegadores para manter os ombros confortáveis.",
+        "Aproxime os braços à frente e acima do tronco com cotovelos suavemente flexionados.",
+        "Abra os braços com controle sem ultrapassar amplitude confortável."
+      ]
+    },
+    {
+      "id": "chest_press_convergente",
+      "name": "Chest press convergente",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "chest_conv"
+        ]
+      ],
+      "steps": [
+        "Ajuste o banco para que os pegadores fiquem próximos da linha do peito.",
+        "Empurre acompanhando a trajetória convergente da máquina.",
+        "Retorne devagar mantendo o tórax apoiado."
+      ]
+    },
+    {
+      "id": "crucifixo_inclinado_halter",
+      "name": "Crucifixo inclinado com halteres",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "aducao_peito",
+      "kind": "Isolador",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "halter",
+          "banco_incl"
+        ]
+      ],
+      "steps": [
+        "Regule o banco com inclinação moderada e deite-se com estabilidade.",
+        "Abra os braços com pequena flexão dos cotovelos sem forçar o ombro.",
+        "Aproxime os halteres acima do peito sem batê-los."
+      ]
+    },
+    {
+      "id": "flexao_maos_elevadas",
+      "name": "Flexão de braços com mãos elevadas",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Posicione mãos num apoio firme e corpo alinhado da cabeça aos calcanhares.",
+        "Flexione os cotovelos aproximando o peito do apoio sem afundar a lombar.",
+        "Empurre de volta até a posição inicial, sem travar excessivamente os cotovelos."
+      ]
+    },
+    {
+      "id": "flexao_apoios",
+      "name": "Flexão de braços com pegadores",
+      "primary": [
+        "peito"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_ant"
+      ],
+      "pattern": "empurrar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "pushup_handles"
+        ]
+      ],
+      "steps": [
+        "Apoie os pegadores firmemente no chão e alinhe o corpo em prancha.",
+        "Flexione os cotovelos dentro de amplitude confortável para os ombros.",
+        "Estenda os cotovelos mantendo o abdômen ativo."
+      ]
+    },
+    {
+      "id": "desenvolvimento_isolateral",
+      "name": "Desenvolvimento isolateral na máquina",
+      "primary": [
+        "ombro_ant"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_lat"
+      ],
+      "pattern": "empurrar_vertical",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "shoulder_iso"
+        ]
+      ],
+      "steps": [
+        "Regule o banco para começar com os pegadores próximos aos ombros.",
+        "Empurre os dois braços independentes para cima mantendo o tronco apoiado.",
+        "Retorne ao início de forma simétrica e controlada."
+      ]
+    },
+    {
+      "id": "desenvolvimento_arnold",
+      "name": "Desenvolvimento Arnold com halteres",
+      "primary": [
+        "ombro_ant"
+      ],
+      "secondary": [
+        "triceps",
+        "ombro_lat"
+      ],
+      "pattern": "empurrar_vertical",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "halter",
+          "banco_incl"
+        ]
+      ],
+      "steps": [
+        "Sente-se no banco com os halteres à frente dos ombros.",
+        "Eleve os halteres girando os antebraços gradualmente sem perder estabilidade.",
+        "Desça pelo mesmo percurso mantendo o tronco apoiado."
+      ]
+    },
+    {
+      "id": "elevacao_frontal_maquina",
+      "name": "Elevação frontal guiada na máquina",
+      "primary": [
+        "ombro_ant"
+      ],
+      "secondary": [
+        "ombro_lat"
+      ],
+      "pattern": "flexao_ombro",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "front_machine"
+        ]
+      ],
+      "steps": [
+        "Ajuste assento e posicionamento dos braços na máquina.",
+        "Eleve os braços pela trajetória guiada até altura confortável.",
+        "Desça sem perder a tensão e sem elevar o tronco."
+      ]
+    },
+    {
+      "id": "elevacao_frontal_halter",
+      "name": "Elevação frontal com halteres",
+      "primary": [
+        "ombro_ant"
+      ],
+      "secondary": [
+        "ombro_lat"
+      ],
+      "pattern": "flexao_ombro",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter"
+        ]
+      ],
+      "steps": [
+        "Fique em pé com abdômen firme e halteres à frente das coxas.",
+        "Eleve um ou ambos os braços à frente até amplitude confortável.",
+        "Desça lentamente sem usar impulso das pernas."
+      ]
+    },
+    {
+      "id": "elevacao_lateral_uni_polia",
+      "name": "Elevação lateral unilateral na polia",
+      "primary": [
+        "ombro_lat"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "abducao_ombro",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_ajustavel"
+        ]
+      ],
+      "steps": [
+        "Ajuste a polia baixa e segure o pegador com o braço do lado oposto.",
+        "Eleve o braço lateralmente mantendo cotovelo suavemente flexionado.",
+        "Retorne com controle sem girar o tronco."
+      ]
+    },
+    {
+      "id": "crucifixo_inverso_cabo",
+      "name": "Crucifixo inverso no crossover",
+      "primary": [
+        "ombro_post"
+      ],
+      "secondary": [
+        "trapezio"
+      ],
+      "pattern": "abducao_horizontal",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "crossover"
+        ]
+      ],
+      "steps": [
+        "Regule as polias e cruze os pegadores à frente do corpo.",
+        "Abra os braços mantendo ombros baixos e cotovelos semiflexionados.",
+        "Feche devagar sem deixar a carga puxar o tronco."
+      ]
+    },
+    {
+      "id": "encolh_smith",
+      "name": "Encolhimento de ombros no Smith",
+      "primary": [
+        "trapezio"
+      ],
+      "secondary": [
+        "antebraco"
+      ],
+      "pattern": "elevacao_escapula",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "smith"
+        ]
+      ],
+      "steps": [
+        "Ajuste a altura de saída da barra e mantenha os pés firmes.",
+        "Eleve os ombros verticalmente sem rodá-los para trás.",
+        "Abaixe-os de modo controlado, com o pescoço neutro."
+      ]
+    },
+    {
+      "id": "rosca_concentrada",
+      "name": "Rosca concentrada com halter",
+      "primary": [
+        "biceps"
+      ],
+      "secondary": [
+        "antebraco"
+      ],
+      "pattern": "flexao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter",
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Sente-se com cotovelo apoiado na região interna da coxa.",
+        "Flexione o cotovelo erguendo o halter sem mover o ombro.",
+        "Desça controladamente sem deixar o braço relaxar abruptamente."
+      ]
+    },
+    {
+      "id": "rosca_martelo_corda",
+      "name": "Rosca martelo com corda na polia",
+      "primary": [
+        "biceps"
+      ],
+      "secondary": [
+        "antebraco"
+      ],
+      "pattern": "flexao_cotovelo_neutra",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_baixa",
+          "rope_triceps"
+        ]
+      ],
+      "steps": [
+        "Conecte a corda à polia baixa e mantenha punhos em pegada neutra.",
+        "Flexione os cotovelos sem projetar ombros ou balançar o tronco.",
+        "Volte devagar até extensão confortável."
+      ]
+    },
+    {
+      "id": "rosca_inversa_polia",
+      "name": "Rosca inversa com barra na polia",
+      "primary": [
+        "antebraco"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "flexao_cotovelo_pronada",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_baixa",
+          "straight_handle"
+        ]
+      ],
+      "steps": [
+        "Conecte a barra reta à polia baixa e use pegada pronada.",
+        "Flexione os cotovelos mantendo punhos e ombros estáveis.",
+        "Retorne lentamente sem estalar os cotovelos."
+      ]
+    },
+    {
+      "id": "rosca_biceps_ez",
+      "name": "Rosca direta com barra W",
+      "primary": [
+        "biceps"
+      ],
+      "secondary": [
+        "antebraco"
+      ],
+      "pattern": "flexao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "barra_w"
+        ]
+      ],
+      "steps": [
+        "Segure a barra W com punhos confortáveis e tronco ereto.",
+        "Flexione os cotovelos sem projetá-los à frente para compensar carga.",
+        "Desça com controle até quase estender os braços."
+      ]
+    },
+    {
+      "id": "rosca_scott_halter",
+      "name": "Rosca Scott unilateral com halter",
+      "primary": [
+        "biceps"
+      ],
+      "secondary": [
+        "antebraco"
+      ],
+      "pattern": "flexao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "scott_banco",
+          "halter"
+        ]
+      ],
+      "steps": [
+        "Apoie a parte posterior do braço no banco Scott.",
+        "Flexione o cotovelo aproximando o halter sem tirar o braço do apoio.",
+        "Retorne lentamente, evitando hiperextensão sob carga."
+      ]
+    },
+    {
+      "id": "triceps_overhead_maquina",
+      "name": "Tríceps acima da cabeça na máquina",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [],
+      "pattern": "extensao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "triceps_overhead_machine"
+        ]
+      ],
+      "steps": [
+        "Ajuste a posição dos braços conforme os apoios da máquina.",
+        "Estenda os cotovelos mantendo a parte superior dos braços estável.",
+        "Volte de forma controlada até flexão confortável."
+      ]
+    },
+    {
+      "id": "triceps_frances_corda",
+      "name": "Tríceps francês com corda na polia alta",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [],
+      "pattern": "extensao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_alta",
+          "rope_triceps"
+        ]
+      ],
+      "steps": [
+        "Conecte a corda na polia e posicione-se com apoio firme dos pés.",
+        "Estenda os cotovelos à frente ou acima da cabeça conforme a direção do cabo.",
+        "Flexione-os lentamente sem forçar a região lombar."
+      ]
+    },
+    {
+      "id": "triceps_unilateral_polia",
+      "name": "Extensão unilateral de tríceps na polia",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [],
+      "pattern": "extensao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_alta"
+        ]
+      ],
+      "steps": [
+        "Ajuste a polia e segure o pegador com um braço.",
+        "Estenda o cotovelo sem girar o tronco ou elevar o ombro.",
+        "Retorne ao ângulo inicial controlando o peso."
+      ]
+    },
+    {
+      "id": "triceps_mergulho_banco",
+      "name": "Mergulho no banco",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [
+        "peito",
+        "ombro_ant"
+      ],
+      "pattern": "extensao_cotovelo",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Apoie as mãos em banco firme, com os pés estáveis no chão.",
+        "Flexione os cotovelos apenas na amplitude confortável dos ombros.",
+        "Empurre de volta sem deixar o ombro deslocar-se excessivamente para frente."
+      ]
+    },
+    {
+      "id": "triceps_polia_barra_reta",
+      "name": "Tríceps na barra reta da polia",
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [],
+      "pattern": "extensao_cotovelo",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_alta",
+          "straight_handle"
+        ]
+      ],
+      "steps": [
+        "Conecte a barra reta à polia alta e mantenha o corpo estável.",
+        "Estenda os cotovelos mantendo os braços junto ao tronco.",
+        "Retorne sem permitir que a carga levante os ombros."
+      ]
+    },
+    {
+      "id": "roller_antebraco",
+      "name": "Rolo de punho para antebraços",
+      "primary": [
+        "antebraco"
+      ],
+      "secondary": [],
+      "pattern": "flexao_punho",
+      "kind": "Isolador",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "forearm_roller"
+        ]
+      ],
+      "steps": [
+        "Segure o rolo com ambos os braços e carga leve adequada.",
+        "Gire os punhos gradualmente para enrolar a corda e elevar a carga.",
+        "Desenrole lentamente controlando a descida."
+      ]
+    },
+    {
+      "id": "extensao_punho_halter",
+      "name": "Extensão de punhos com halteres",
+      "primary": [
+        "antebraco"
+      ],
+      "secondary": [],
+      "pattern": "extensao_punho",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter",
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Apoie antebraços em banco com as palmas voltadas para baixo.",
+        "Eleve as mãos usando extensão dos punhos sem tirar os braços do apoio.",
+        "Abaixe lentamente até amplitude confortável."
+      ]
+    },
+    {
+      "id": "v_squat_ex",
+      "name": "Agachamento V-squat na máquina",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "posterior"
+      ],
+      "pattern": "agachar_guiado",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "v_squat"
+        ]
+      ],
+      "steps": [
+        "Ajuste os ombros e pés às marcações seguras do equipamento.",
+        "Flexione quadril e joelhos seguindo a trajetória guiada sem perder alinhamento.",
+        "Estenda as pernas sem bloquear totalmente os joelhos sob carga."
+      ]
+    },
+    {
+      "id": "leg_press_uni_ex",
+      "name": "Leg press unilateral dedicado",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "posterior"
+      ],
+      "pattern": "empurrar_pernas",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "leg_press_uni"
+        ]
+      ],
+      "steps": [
+        "Ajuste assento e um dos pés ao centro da plataforma individual.",
+        "Empurre a plataforma sem deixar o joelho colapsar para dentro.",
+        "Flexione o joelho lentamente dentro de amplitude confortável."
+      ]
+    },
+    {
+      "id": "legpress45_uni",
+      "name": "Leg press 45° com uma perna",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "posterior"
+      ],
+      "pattern": "empurrar_pernas",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "leg45"
+        ]
+      ],
+      "steps": [
+        "Use carga reduzida e coloque apenas um pé bem apoiado na plataforma.",
+        "Empurre mantendo a pelve em contato com o encosto e joelho alinhado.",
+        "Volte controlando a descida sem deixar o quadril perder estabilidade."
+      ]
+    },
+    {
+      "id": "agach_sumo_halter",
+      "name": "Agachamento sumô com halter",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "adutores"
+      ],
+      "pattern": "agachar",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter"
+        ]
+      ],
+      "steps": [
+        "Fique em pé com base mais ampla e halter seguro à frente do corpo.",
+        "Flexione os joelhos seguindo a direção dos pés e mantendo a coluna neutra.",
+        "Suba estendendo quadril e joelhos de forma controlada."
+      ]
+    },
+    {
+      "id": "agach_landmine",
+      "name": "Agachamento com barra landmine",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "agachar",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "landmine",
+          "barra"
+        ]
+      ],
+      "steps": [
+        "Fixe a barra na base landmine e segure sua extremidade à frente do peito.",
+        "Agache mantendo os pés apoiados e os joelhos alinhados.",
+        "Suba mantendo o tronco estável e o peso próximo."
+      ]
+    },
+    {
+      "id": "agach_frontal_barra",
+      "name": "Agachamento frontal com barra",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "abdomen"
+      ],
+      "pattern": "agachar",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "rack",
+          "barra"
+        ]
+      ],
+      "steps": [
+        "Posicione a barra sobre a parte frontal dos ombros em rack seguro.",
+        "Agache mantendo cotovelos elevados e o tronco controlado.",
+        "Suba sem perder o equilíbrio e recoloque a barra no suporte."
+      ]
+    },
+    {
+      "id": "passada_reversa_halter",
+      "name": "Passada reversa com halteres",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "agachar_unilateral",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter"
+        ]
+      ],
+      "steps": [
+        "Fique em pé com halteres aos lados e abdômen estabilizado.",
+        "Dê um passo para trás flexionando ambas as pernas com o tronco controlado.",
+        "Empurre o chão com a perna da frente e volte à posição inicial."
+      ]
+    },
+    {
+      "id": "afundo_smith",
+      "name": "Afundo estático no Smith",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "agachar_unilateral",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "smith"
+        ]
+      ],
+      "steps": [
+        "Ajuste a barra e posicione os pés afastados em base estável.",
+        "Flexione os joelhos com a barra seguindo o trilho, sem forçar o quadril.",
+        "Suba com controle e mantenha os pés na mesma posição."
+      ]
+    },
+    {
+      "id": "extensora_unilateral",
+      "name": "Extensão unilateral na cadeira extensora",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [],
+      "pattern": "extensao_joelho",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "extensora"
+        ]
+      ],
+      "steps": [
+        "Regule banco e rolo para alinhar joelho e eixo da máquina.",
+        "Estenda apenas uma perna sem elevar o quadril do assento.",
+        "Desça a carga lentamente até flexão confortável."
+      ]
+    },
+    {
+      "id": "flexora_mesa_uni",
+      "name": "Flexão unilateral na mesa flexora",
+      "primary": [
+        "posterior"
+      ],
+      "secondary": [],
+      "pattern": "flexao_joelho",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "flexora_mesa"
+        ]
+      ],
+      "steps": [
+        "Deite-se e ajuste o rolo próximo à parte inferior da perna.",
+        "Flexione um joelho por vez sem tirar o quadril do banco.",
+        "Volte devagar mantendo a outra perna relaxada e segura."
+      ]
+    },
+    {
+      "id": "flexora_nordica",
+      "name": "Flexão nórdica assistida",
+      "primary": [
+        "posterior"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "flexao_joelho",
+      "kind": "Composto",
+      "level": "Avançado",
+      "setups": [
+        [
+          "nordic_bench"
+        ]
+      ],
+      "steps": [
+        "Fixe os tornozelos no banco nórdico e mantenha tronco e quadris alinhados.",
+        "Incline o corpo lentamente à frente resistindo com a parte posterior da coxa.",
+        "Use os braços para amortecer e ajudar no retorno, evitando queda abrupta."
+      ]
+    },
+    {
+      "id": "stiff_halter",
+      "name": "Levantamento romeno com halteres",
+      "primary": [
+        "posterior"
+      ],
+      "secondary": [
+        "gluteos",
+        "lombar"
+      ],
+      "pattern": "dobrar_quadril",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter"
+        ]
+      ],
+      "steps": [
+        "Fique de pé com halteres à frente das coxas e joelhos suavemente flexionados.",
+        "Leve o quadril para trás descendo os halteres próximos às pernas.",
+        "Volte estendendo o quadril, sem arredondar excessivamente a coluna."
+      ]
+    },
+    {
+      "id": "terra_sumo",
+      "name": "Levantamento terra sumô com barra",
+      "primary": [
+        "gluteos"
+      ],
+      "secondary": [
+        "posterior",
+        "quadriceps"
+      ],
+      "pattern": "levantar_carga",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "barra"
+        ]
+      ],
+      "steps": [
+        "Posicione pés mais abertos e a barra sobre o meio dos pés.",
+        "Segure a barra entre as pernas e levante mantendo o tronco organizado.",
+        "Desça aproximando a barra do corpo com controle."
+      ]
+    },
+    {
+      "id": "hip_thrust_smith",
+      "name": "Elevação pélvica no Smith",
+      "primary": [
+        "gluteos"
+      ],
+      "secondary": [
+        "posterior"
+      ],
+      "pattern": "extensao_quadril",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "smith",
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Apoie a parte superior das costas em banco estável sob barra acolchoada.",
+        "Eleve o quadril sem hiperestender a lombar e mantendo os joelhos alinhados.",
+        "Desça lentamente antes de repetir, conferindo travas de segurança."
+      ]
+    },
+    {
+      "id": "hip_bridge_uni",
+      "name": "Ponte de glúteo unilateral no solo",
+      "primary": [
+        "gluteos"
+      ],
+      "secondary": [
+        "posterior"
+      ],
+      "pattern": "extensao_quadril",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Deite-se com um pé apoiado no solo e o outro elevado.",
+        "Eleve o quadril mantendo a pelve nivelada sem arquear a lombar.",
+        "Retorne suavemente à posição inicial."
+      ]
+    },
+    {
+      "id": "abducao_em_pe_maquina",
+      "name": "Abdução de quadril em pé na máquina",
+      "primary": [
+        "abdutores"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "abducao_quadril",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "glute_abduction_stand"
+        ]
+      ],
+      "steps": [
+        "Ajuste suportes e pegadores da abdutora em pé.",
+        "Afaste a perna pela trajetória prevista mantendo a pelve estável.",
+        "Retorne sem rodar a cintura para gerar impulso."
+      ]
+    },
+    {
+      "id": "abducao_deitado",
+      "name": "Abdução lateral de quadril no solo",
+      "primary": [
+        "abdutores"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "abducao_quadril",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Deite de lado mantendo pernas alinhadas ao tronco.",
+        "Eleve a perna superior sem rodar quadril ou inclinar o tronco.",
+        "Desça lentamente mantendo a pelve empilhada."
+      ]
+    },
+    {
+      "id": "aducao_deitado",
+      "name": "Adução de quadril deitado de lado",
+      "primary": [
+        "adutores"
+      ],
+      "secondary": [],
+      "pattern": "aducao_quadril",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Deite de lado com a perna superior apoiada à frente.",
+        "Eleve a perna de baixo sem girar o quadril.",
+        "Abaixe devagar sem perder a posição lateral."
+      ]
+    },
+    {
+      "id": "pant_donkey_ex",
+      "name": "Elevação de panturrilha na máquina donkey",
+      "primary": [
+        "panturrilha"
+      ],
+      "secondary": [],
+      "pattern": "flexao_plantar",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "calf_donkey"
+        ]
+      ],
+      "steps": [
+        "Ajuste a máquina para manter o tronco apoiado e os pés na plataforma.",
+        "Eleve os calcanhares contra a resistência sem balançar o corpo.",
+        "Abaixe lentamente até alongamento confortável."
+      ]
+    },
+    {
+      "id": "pant_sent_halter",
+      "name": "Elevação de panturrilha sentado com halter",
+      "primary": [
+        "panturrilha"
+      ],
+      "secondary": [],
+      "pattern": "flexao_plantar_sentada",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "halter",
+          "banco_reto"
+        ]
+      ],
+      "steps": [
+        "Sente no banco com halteres apoiados com segurança sobre as coxas.",
+        "Eleve os calcanhares mantendo as pontas dos pés apoiadas.",
+        "Abaixe lentamente sem levantar o banco ou mover os joelhos."
+      ]
+    },
+    {
+      "id": "pant_unilateral_degrau",
+      "name": "Elevação unilateral de panturrilha no step",
+      "primary": [
+        "panturrilha"
+      ],
+      "secondary": [],
+      "pattern": "flexao_plantar",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "step"
+        ]
+      ],
+      "steps": [
+        "Apoie um pé em step estável usando apoio para equilíbrio se preciso.",
+        "Eleve o calcanhar sem deixar o tornozelo inclinar.",
+        "Desça até amplitude confortável antes da próxima repetição."
+      ]
+    },
+    {
+      "id": "crunch_banco_declinado",
+      "name": "Abdominal curto em banco declinado",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [],
+      "pattern": "flexao_tronco",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "ab_bench"
+        ]
+      ],
+      "steps": [
+        "Fixe os pés de modo seguro no banco abdominal.",
+        "Flexione suavemente a parte superior do tronco sem puxar a cabeça.",
+        "Retorne mantendo o abdômen ativo sem lançar o corpo para trás."
+      ]
+    },
+    {
+      "id": "ab_wheel_joelhos",
+      "name": "Roda abdominal ajoelhado",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "lombar"
+      ],
+      "pattern": "anti_extensao",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "ab_wheel",
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Ajoelhe-se sobre tapete com roda posicionada à frente.",
+        "Role lentamente para frente sem perder a estabilidade lombar.",
+        "Puxe a roda de volta com o abdômen ativo em amplitude que consiga controlar."
+      ]
+    },
+    {
+      "id": "prancha_lateral",
+      "name": "Prancha lateral no solo",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "gluteos"
+      ],
+      "pattern": "estabilizacao_tronco",
+      "kind": "Isométrico",
+      "level": "Todos",
+      "setups": [
+        [
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Apoie antebraço no solo alinhado com o ombro e pernas empilhadas ou flexionadas.",
+        "Eleve o quadril até formar linha estável entre ombro e pernas.",
+        "Mantenha a postura respirando sem deixar o tronco rodar."
+      ]
+    },
+    {
+      "id": "dead_bug",
+      "name": "Dead bug",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "lombar"
+      ],
+      "pattern": "estabilizacao_tronco",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Deite de barriga para cima com quadril e joelhos flexionados e braços elevados.",
+        "Estenda lentamente braço e perna opostos sem arquear a lombar.",
+        "Retorne e alterne os lados mantendo a respiração estável."
+      ]
+    },
+    {
+      "id": "prancha_bosu",
+      "name": "Prancha com antebraços na bola de equilíbrio",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "estabilizacao_tronco",
+      "kind": "Isométrico",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "bosu"
+        ]
+      ],
+      "steps": [
+        "Apoie os antebraços na plataforma de equilíbrio com os pés estáveis.",
+        "Mantenha o tronco em linha reta sem movimentar excessivamente o equipamento.",
+        "Respire e encerre antes de perder o alinhamento."
+      ]
+    },
+    {
+      "id": "rotacao_bola_medicinal",
+      "name": "Rotação de tronco sentado com bola medicinal",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [],
+      "pattern": "rotacao_tronco",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "medicine_ball",
+          "colchonete"
+        ]
+      ],
+      "steps": [
+        "Sente no tapete com joelhos flexionados e bola próxima do peito.",
+        "Gire o tronco suavemente de um lado ao outro sem usar apenas os braços.",
+        "Mantenha a lombar estável e reduza a amplitude se houver desconforto."
+      ]
+    },
+    {
+      "id": "woodchopper_polia",
+      "name": "Rotação diagonal na polia",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "rotacao_tronco",
+      "kind": "Composto",
+      "level": "Intermediário",
+      "setups": [
+        [
+          "polia_ajustavel"
+        ]
+      ],
+      "steps": [
+        "Ajuste a polia à altura adequada e afaste-se para criar tensão leve.",
+        "Gire o tronco em diagonal envolvendo quadril e tórax de forma coordenada.",
+        "Retorne devagar, sem torcer somente a coluna lombar."
+      ]
+    },
+    {
+      "id": "sandbag_agachamento",
+      "name": "Agachamento com saco de areia",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "abdomen"
+      ],
+      "pattern": "agachar",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "sandbag"
+        ]
+      ],
+      "steps": [
+        "Segure o saco de areia próximo ao peito com os pés estáveis.",
+        "Flexione quadril e joelhos mantendo a carga perto do corpo.",
+        "Suba com controle mantendo o tronco ereto."
+      ]
+    },
+    {
+      "id": "sandbag_terra",
+      "name": "Levantamento terra com saco de areia",
+      "primary": [
+        "gluteos"
+      ],
+      "secondary": [
+        "posterior",
+        "quadriceps"
+      ],
+      "pattern": "levantar_carga",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "sandbag"
+        ]
+      ],
+      "steps": [
+        "Posicione o saco no chão entre os pés e aproxime o quadril da carga.",
+        "Erga o saco com o tronco estável e a carga próxima ao corpo.",
+        "Desça flexionando quadril e joelhos, sem arredondar excessivamente as costas."
+      ]
+    },
+    {
+      "id": "agach_anilha",
+      "name": "Agachamento com anilha à frente do peito",
+      "primary": [
+        "quadriceps"
+      ],
+      "secondary": [
+        "gluteos",
+        "abdomen"
+      ],
+      "pattern": "agachar",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "weight_plate"
+        ]
+      ],
+      "steps": [
+        "Segure a anilha junto ao peito e mantenha os pés firmes.",
+        "Agache com joelhos alinhados e coluna organizada.",
+        "Levante controladamente sem afastar a carga do corpo."
+      ]
+    },
+    {
+      "id": "remada_baixa_triangulo",
+      "name": "Remada baixa com pegador triangular",
+      "primary": [
+        "costas"
+      ],
+      "secondary": [
+        "biceps"
+      ],
+      "pattern": "remar_horizontal",
+      "kind": "Composto",
+      "level": "Todos",
+      "setups": [
+        [
+          "row_seated",
+          "v_handle"
+        ]
+      ],
+      "steps": [
+        "Conecte o puxador triangular ao cabo da remada baixa e sente-se de modo estável.",
+        "Puxe o triângulo em direção ao abdômen com ombros relaxados.",
+        "Retorne os braços lentamente sem arredondar excessivamente a coluna."
+      ]
+    },
+    {
+      "id": "coice_polia_tornozeleira",
+      "name": "Coice de glúteo com tornozeleira na polia",
+      "primary": [
+        "gluteos"
+      ],
+      "secondary": [
+        "posterior"
+      ],
+      "pattern": "extensao_quadril_isolada",
+      "kind": "Isolador",
+      "level": "Todos",
+      "setups": [
+        [
+          "polia_baixa",
+          "ankle_strap"
+        ]
+      ],
+      "steps": [
+        "Conecte uma tornozeleira adequada à polia baixa e segure apoio firme.",
+        "Leve a perna para trás estendendo o quadril sem arquear a lombar.",
+        "Retorne devagar sem usar balanço do tronco."
+      ]
+    },
+    {
+      "id": "pallof_elastico",
+      "name": "Pallof press com elástico",
+      "primary": [
+        "abdomen"
+      ],
+      "secondary": [
+        "ombro_ant"
+      ],
+      "pattern": "anti_rotacao",
+      "kind": "Isométrico",
+      "level": "Todos",
+      "setups": [
+        [
+          "elastico"
+        ]
+      ],
+      "steps": [
+        "Fixe a faixa elástica a um ponto seguro e fique de lado para a âncora.",
+        "Estenda os braços à frente resistindo à tendência de girar o tronco.",
+        "Traga as mãos de volta ao peito com controle."
       ]
     }
   ]
