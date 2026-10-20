@@ -1,9 +1,9 @@
-name: Validar FitSwap 1.1
+name: Validar FitSwap em revisão
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feature/catalogo-1-2-expansao]
   push:
-    branches: [feature/catalogo-visual-1-1]
+    branches: [feature/catalogo-visual-1-1, feature/catalogo-1-2-expansao, feature/substituicoes-1-3-beta]
 permissions:
   contents: read
 jobs:
