@@ -1,7 +1,7 @@
 {
   "name": "fitswap-mobile",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0-beta.1",
   "description": "FitSwap — aplicativo web mobile para explorar exercícios e substituir equipamentos ocupados.",
   "type": "module",
   "scripts": {

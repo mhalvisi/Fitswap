@@ -227,6 +227,7 @@ function equipmentSheet(eq){
  const ex=relatedToEq(eq.id);
  return `${sheetHead(escapeHTML(eq.group).toUpperCase(),eq.name)}<div class="sheet-scroll">${mediaGallery('equipment',eq.id,eq.name)}
  <div class="detail-meta">${eq.aliases?.length?`<span class="detail-tag">Também: ${escapeHTML(eq.aliases.join(' · '))}</span>`:''}<span class="detail-tag green">${ex.length} exercícios</span></div>
+ ${eq.description?`<p class="sheet-intro">${escapeHTML(eq.description)}</p>`:''}
  ${(modelsByEquipment[eq.id]||[]).length?`<div class="model-list"><strong>Modelos cadastrados</strong>${modelsByEquipment[eq.id].map(m=>`<div>${escapeHTML(m.brand)} · ${escapeHTML(m.model)}</div>`).join('')}</div>`:''}<div class="equip-status"><div class="equip-status-head"><strong>Este equipamento</strong><span class="status-chip ${state.busy.has(eq.id)?'warn':'neutral'}">${state.busy.has(eq.id)?'Ocupado*':'Sem ocupação marcada'}</span></div>${eqActions(eq.id)}</div>
  <div class="sheet-section-head"><h3>O que dá para treinar aqui?</h3><span>${ex.length} movimentos</span></div>
  ${ex.map((e,i)=>`<button class="substitute" data-action="exercise" data-id="${e.id}"><span class="sub-rank">${i+1}</span><span class="sub-body"><strong>${escapeHTML(e.name)}</strong><small>${escapeHTML(e.primary.map(mName).join(' · '))} · ${escapeHTML(pName(e.pattern))}</small></span>${icon('chevron','s18')}</button>`).join('')}
