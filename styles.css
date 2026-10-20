@@ -46,3 +46,7 @@
 .alternative-group .sheet-intro{margin:3px 0 10px}
 .substitute .reason.related{background:#fff4d8;color:#805b1d}
 .substitute .reason.different{background:#f2eef8;color:#654979}
+
+/* Único aviso contextual por tela, sem repetição nas imagens ou vídeos. */
+.recommendation-notice{display:flex;align-items:flex-start;gap:9px;padding:11px 12px;margin:8px 0 14px;border:1px solid #d8e3d0;border-radius:12px;background:#f7faf3;color:#40523a;font-size:12px;line-height:1.45}
+.recommendation-notice .icon{flex:none;margin-top:1px}

@@ -51,6 +51,7 @@ function mediaGallery(kind,id,label){
 }
 
 const commonEq = new Set(['halter','barra','barra_w','rack','banco_reto','banco_incl','smith','leg45','leg_h','extensora','flexora_mesa','flexora_sent','abdutora','adutora','pulldown','row_seated','crossover','polia_alta','polia_baixa','chest','peck','shoulder','barra_fixa','colchonete','step','pant_sent']);
+const recommendationNotice = () => `<div class="recommendation-notice" role="note">${icon('info','s18')}<span>As opções exibidas são referências informativas, não uma prescrição ou garantia de equivalência entre exercícios. O FitSwap não substitui a avaliação e orientação de um profissional de Educação Física habilitado.</span></div>`;
 const navItems = [{id:'home',label:'Início',icon:'home'},{id:'explore',label:'Explorar',icon:'search'},{id:'gym',label:'Academia',icon:'gym'},{id:'saved',label:'Salvos',icon:'heart'}];
 const modeItems = [{id:'muscle',label:'Músculos'},{id:'equipment',label:'Máquinas'},{id:'exercise',label:'Exercícios'}];
 const validSet = (value, index) => new Set(Array.isArray(value)?value.filter(id=>index[id]):[]);
@@ -148,7 +149,6 @@ function renderExplore(){
    ${exploreFilters()}
    <div class="result-tools" style="margin-top:12px"><button class="compact-filter ${state.gymOnly?'active':''}" data-action="toggle-gym-only">${icon('filter','s18')} ${state.gymOnly?'Só minha academia':'Toda a base'}</button>${state.busy.size?`<span class="status-chip warn">${state.busy.size} ocupados*</span>`:''}</div>
    <div id="explore-results" aria-live="polite">${resultsExplore()}</div>
-   <p class="small-disclaimer">Os exercícios são sugestões informativas. Movimentos para o mesmo músculo podem produzir estímulos diferentes.</p>
  </div>`;
 }
 function filteredGym(){return allEquipment.filter(eq=>(state.gymList==='Todos'||(state.gymList==='Meus'&&state.gym.has(eq.id))||(state.gymList==='Ocupados'&&state.busy.has(eq.id)))&&find(equipmentText(eq),state.gymQuery));}
@@ -213,7 +213,7 @@ function renderAlternatives(ex){
     ).join('')}</section>`;
   };
   return `<div class='sheet-section-head'><h3>Opções para continuar o treino</h3><span>${opts.length} possibilidades*</span></div>
-    <p class='sheet-intro'>Mostramos primeiro movimentos com o mesmo padrão cadastrado. Sugestões do mesmo músculo ficam separadas e não são tratadas como equivalentes. O nível de dificuldade e o equipamento disponível precisam ser avaliados.</p>
+    ${recommendationNotice()}
     ${opts.length?groups.map(renderGroup).join(''):`<div class='empty-state'>${icon('info','s28')}<strong>Sem opções com esses filtros</strong><p>Revise aparelhos ocupados, acessórios e equipamentos da sua academia.</p><button data-action='navigate' data-id='gym'>Abrir minha academia</button></div>`}`;
 }
 function renderExecution(ex){return `<div class="sheet-section-head"><h3>Passo a passo</h3><span>${ex.steps.length} etapas</span></div>${ex.steps.map((s,i)=>`<div class="step-row"><span class="step-number">${i+1}</span><span>${escapeHTML(s)}</span></div>`).join('')}<div class="sheet-section-head"><h3>Músculos e padrão</h3></div><p class="sheet-intro"><strong>Principais:</strong> ${escapeHTML(ex.primary.map(mName).join(', '))}.<br><strong>Secundários:</strong> ${escapeHTML(ex.secondary.map(mName).join(', ')||'Não especificados')}.<br><strong>Movimento:</strong> ${escapeHTML(pName(ex.pattern))}.</p>`;}
@@ -224,7 +224,7 @@ function exerciseSheet(ex){
    ${tab==='alternatives'?renderAlternatives(ex):renderExecution(ex)}
    <div class="sheet-section-head"><h3>Equipamentos necessários</h3><span>${ex.setups.length} ${ex.setups.length>1?'opções':'opção'}</span></div>
    ${ex.setups.map(kitCard).join('')}
-   <div class="notice">${icon('info')}<span>* Status baseado em marcações manuais, não em disponibilidade em tempo real. As sugestões são comparações do catálogo, não substituições biomecânicas validadas ou prescrição individual; respeite suas limitações e orientação profissional.</span></div>
+   <div class="notice">${icon('info')}<span>* Status baseado em marcações manuais, não em disponibilidade em tempo real. Confira os acessórios necessários para cada movimento.</span></div>
  </div><div class="sheet-footer"><button class="primary-button full" data-action="favorite" data-id="${ex.id}">${icon('heart')} ${fav?'Remover dos salvos':'Salvar exercício'}</button></div>`;
 }
 function equipmentSheet(eq){
@@ -243,7 +243,7 @@ function quickResults(){
  const actual=presets.length?presets:(!state.quickQuery?allExercises.slice(0,8):[]);
  return `<div class="quick-list">${actual.length?actual.map(e=>`<button data-action="exercise" data-id="${e.id}">${icon('swap')}<span style="flex:1"><strong>${escapeHTML(e.name)}</strong><small>${escapeHTML(e.primary.map(mName).join(' · '))} · ${escapeHTML(excerpt(e))}</small></span>${icon('chevron','s18')}</button>`).join(''):`<div class="empty-state"><strong>Nenhum exercício encontrado</strong><p>Tente pesquisar pelo nome do movimento ou pelo músculo.</p></div>`}</div>`;
 }
-function quickSheet(){return `${sheetHead('ATALHO DE SUBSTITUIÇÃO','Trocar exercício')}<div class="sheet-scroll"><p class="sheet-intro">A máquina está ocupada? Selecione seu exercício atual para encontrar outras opções.</p><label class="search-field sheet-search">${icon('search')}<input id="quick-search" data-input="quick" placeholder="Ex.: leg press, supino, costas" value="${escapeHTML(state.quickQuery)}" aria-label="Buscar exercício para substituir" autocomplete="off"></label><div id="quick-results">${quickResults()}</div><div class="notice">${icon('lightbulb')}<span>Você também pode marcar as máquinas ocupadas na aba Academia para aprimorar a lista de alternativas.</span></div></div>`;}
+function quickSheet(){return `${sheetHead('ATALHO DE SUBSTITUIÇÃO','Trocar exercício')}<div class="sheet-scroll"><p class="sheet-intro">A máquina está ocupada? Selecione seu exercício atual para conhecer outras opções.</p>${recommendationNotice()}<label class="search-field sheet-search">${icon('search')}<input id="quick-search" data-input="quick" placeholder="Ex.: leg press, supino, costas" value="${escapeHTML(state.quickQuery)}" aria-label="Buscar exercício para substituir" autocomplete="off"></label><div id="quick-results">${quickResults()}</div><div class="notice">${icon('lightbulb')}<span>Você também pode marcar as máquinas ocupadas na aba Academia para aprimorar a lista de alternativas.</span></div></div>`;}
 function renderSheet(preserveScroll=false){
  if(!state.sheet){root.innerHTML='';return;}
  const type=state.sheet.type;
