@@ -54,3 +54,6 @@ Referência a `equipmentId` é obrigatória. Não cadastrar marca/modelo por sem
 3. Adicionar autor, link e licença em cada entrada; executar `npm test`.
 4. Publicar na branch principal somente após aceitação editorial e de direitos.
 5. Depois: preparar importação de exercícios em lotes com fila de revisão; nunca copiar automaticamente imagens ou textos sem verificar direitos.
+
+### Exceção controlada — lote 01
+Nesta fase piloto, seis fontes específicas do Wikimedia Commons foram autorizadas e vinculadas por URL HTTPS de miniatura. A exceção é limitada aos caminhos do `catalogo/lote01-direitos.json`, com whitelist de domínio, conferência por teste e créditos no painel. Não usar hotlinks para novos lotes sem decisão editorial. As fotos **não funcionam offline** até migração para `media/` no próprio projeto.

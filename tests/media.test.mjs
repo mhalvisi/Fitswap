@@ -15,6 +15,7 @@ const models = sandbox.window.FITSWAP_MODELS;
 const allEquip = new Set(catalog.equipment.map(e => e.id));
 const allEx = new Set(catalog.exercises.map(e => e.id));
 const validPath = /^media\/[a-z0-9][a-z0-9/_-]*\.(webp|avif|png|jpe?g)$/i;
+const wikimediaPath = /^https:\/\/thumb\.wikimedia\.org\/wikipedia\/commons\/thumb\/[a-f0-9]\/[a-f0-9]{2}\/[a-z0-9%_.()\-]+\/[0-9]+px-[a-z0-9%_.()\-]+\.(webp|png|jpe?g)$/i;
 const https = s => typeof s === 'string' && /^https:\/\/[^\s/]+/.test(s);
 const nonempty = s => typeof s === 'string' && s.trim().length > 0;
 
@@ -26,16 +27,19 @@ test('somente arquivos aprovados e documentados podem entrar na mídia publicada
   for (const a of media.assets) {
     assert.ok(nonempty(a.id) && ['equipment','exercise'].includes(a.kind), 'tipo de mídia inválido');
     assert.equal(a.status, 'approved', `mídia não aprovada no pacote: ${a.id}`);
-    assert.match(a.path, validPath, `${a.id}: mídia não local ou tipo inadequado`);
+    assert.ok(validPath.test(a.path) || wikimediaPath.test(a.path), `${a.id}: caminho de imagem não aprovado`);
+    if (wikimediaPath.test(a.path)) assert.equal(a.delivery,'external-preview',`${a.id}: falta marcar dependência de internet`);
     assert.ok(nonempty(a.alt), `${a.id}: texto alternativo ausente`);
     assert.ok(a.license && nonempty(a.license.licenseId), `${a.id}: licença sem identificação`);
     assert.ok(https(a.license.licenseUrl) && https(a.license.sourceUrl), `${a.id}: URLs de direitos incorretas`);
     assert.ok(nonempty(a.license.author) && nonempty(a.license.credit), `${a.id}: autoria/crédito ausente`);
     assert.match(a.license.checkedAt, /^\d{4}-\d{2}-\d{2}$/, `${a.id}: data de revisão ausente`);
     assert.ok(nonempty(a.license.approvedBy) && nonempty(a.license.approvalNote), `${a.id}: aprovação ausente`);
-    const file = resolve(new URL('../', import.meta.url).pathname, a.path);
-    assert.ok((await stat(file)).isFile(), `${a.id}: arquivo de imagem não encontrado`);
-    assert.ok((await stat(file)).size <= 2 * 1024 * 1024, `${a.id}: arquivo de imagem muito grande`);
+    if (validPath.test(a.path)) {
+      const file = resolve(new URL('../', import.meta.url).pathname, a.path);
+      assert.ok((await stat(file)).isFile(), `${a.id}: arquivo de imagem não encontrado`);
+      assert.ok((await stat(file)).size <= 2 * 1024 * 1024, `${a.id}: arquivo de imagem muito grande`);
+    }
   }
   const referenced = new Set();
   for (const [kind, group, ids] of [

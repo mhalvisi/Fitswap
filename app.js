@@ -21,6 +21,7 @@ const mName = id => muscles[id]?.name ?? id;
 const pName = id => patterns[id]?.name ?? id;
 const allExercises = sorted(DB.exercises), allEquipment = sorted(DB.equipment);
 const MEDIA = window.FITSWAP_MEDIA || {assets:[], equipment:{}, exercises:{}};
+const allowedMediaPath = path => /^media\/[a-z0-9][a-z0-9/_\-]*\.(webp|avif|png|jpe?g)$/i.test(path || '') || /^https:\/\/thumb\.wikimedia\.org\/wikipedia\/commons\/thumb\/[a-f0-9]\/[a-f0-9]{2}\/[a-z0-9%_.()\-]+\/[0-9]+px-[a-z0-9%_.()\-]+\.(webp|png|jpe?g)$/i.test(path || '');
 const MODELS = Array.isArray(window.FITSWAP_MODELS)?window.FITSWAP_MODELS:[];
 const mediaAssets = Object.fromEntries((MEDIA.assets || []).map(asset=>[asset.id, asset]));
 const modelsByEquipment = MODELS.reduce((acc,model)=>{ (acc[model.equipmentId] ||= []).push(model);return acc; },{});
@@ -28,14 +29,14 @@ function authorizedMedia(kind,id){
   const group=kind==='equipment'?MEDIA.equipment:MEDIA.exercises;
   return (group?.[id] || []).map(assetId=>mediaAssets[assetId]).filter(asset=>
     asset && asset.status==='approved' && asset.license?.approvedBy &&
-    /^media\/[a-z0-9][a-z0-9/_\-]*\.(webp|avif|png|jpe?g)$/i.test(asset.path) &&
+    allowedMediaPath(asset.path) &&
     /^https:\/\//.test(asset.license?.sourceUrl || '') && /^https:\/\//.test(asset.license?.licenseUrl || '')
   );
 }
 function mediaThumbnail(kind,id, fallbackIcon='gym'){
   const first=authorizedMedia(kind,id)[0];
   return first
-    ? `<img class="media-thumb" loading="lazy" decoding="async" src="${escapeHTML(first.path)}" alt="${escapeHTML(first.alt)}" data-fallback-icon="${escapeHTML(fallbackIcon)}">`
+    ? `<img class="media-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHTML(first.path)}" alt="${escapeHTML(first.alt)}" title="${escapeHTML(first.license.credit)} — veja detalhes para fonte e licença" data-fallback-icon="${escapeHTML(fallbackIcon)}">`
     : `<span class="media-placeholder-symbol">${icon(fallbackIcon,'s28')}</span>`;
 }
 function mediaGallery(kind,id,label){
@@ -45,7 +46,7 @@ function mediaGallery(kind,id,label){
     <strong>Imagem em preparação</strong><span>Fotografias e demonstrações serão adicionadas após revisão das licenças.</span>
   </div>`;
   return `<div class="media-gallery media-gallery-scroll" role="region" aria-label="Galeria de ${escapeHTML(label)}" tabindex="0">${items.map(a=>
-    `<figure class="media-figure"><img loading="lazy" decoding="async" src="${escapeHTML(a.path)}" alt="${escapeHTML(a.alt)}" data-gallery-img="1"><figcaption><span>${escapeHTML(a.license.credit || a.license.author)}</span><nav class="media-credits" aria-label="Créditos da imagem"><a href="${escapeHTML(a.license.sourceUrl)}" target="_blank" rel="noopener noreferrer">Fonte ↗</a><a href="${escapeHTML(a.license.licenseUrl)}" target="_blank" rel="noopener noreferrer">Licença ↗</a></nav></figcaption></figure>`
+    `<figure class="media-figure"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${escapeHTML(a.path)}" alt="${escapeHTML(a.alt)}" data-gallery-img="1"><figcaption><span>${escapeHTML(a.license.credit || a.license.author)}</span><nav class="media-credits" aria-label="Créditos da imagem"><a href="${escapeHTML(a.license.sourceUrl)}" target="_blank" rel="noopener noreferrer">Fonte ↗</a><a href="${escapeHTML(a.license.licenseUrl)}" target="_blank" rel="noopener noreferrer">Licença ↗</a></nav></figcaption><div class="media-photo-note">${escapeHTML(a.license.modifications || "Arquivo original sem alterações")} · Foto ilustrativa; fabricantes não patrocinam o FitSwap. ${a.delivery==='external-preview'?'Conexão necessária para visualizar esta foto.':''}</div></figure>`
   ).join('')}</div>`;
 }
 

@@ -34,3 +34,9 @@
 @media(max-width:360px){.media-gallery{min-height:170px}.media-figure img{height:175px}}
 
 .media-credits{display:flex;align-items:center;gap:9px;white-space:nowrap}
+
+/* Atribuição completa, legível no mobile, para mídias CC BY-SA. */
+.media-figure figcaption{flex-wrap:wrap;align-items:start;gap:6px 12px;}
+.media-figure figcaption span{white-space:normal;overflow:visible;text-overflow:clip;flex:1 1 140px;line-height:1.4;}
+.media-photo-note{font-size:10px;line-height:1.5;padding:0 12px 12px;color:#647467;}
+.feed-card .media-visual .media-thumb{object-fit:contain;background:#edf4e8;border-radius:13px;}

@@ -1,3 +1,9 @@
+## Catálogo fotográfico — lote 01 (visualização online)
+
+Seis fotografias do Wikimedia Commons aparecem nos detalhes e cards dos equipamentos correspondentes; todas têm autoria, link da fonte, licença individual e status editorial aprovado. **Os arquivos não estão armazenados localmente**: nesta primeira integração, as miniaturas são carregadas diretamente de `https://thumb.wikimedia.org/`; por isso exigem internet e podem ficar indisponíveis se a fonte externa falhar. Ícones locais substituem imagens ausentes. Exercícios sem fotografia mantêm o estado de imagem em preparação.
+
+Três arquivos aprovados condicionalmente continuam **não publicados**, pelos motivos específicos registrados em `catalogo/lote01-direitos.json`: FS-IMG-002 (subtipo), FS-IMG-004 (leg press sem subtipo validado) e FS-IMG-009 (pessoa ao fundo). A imagem de máquina Smith contém marca incidental; o FitSwap não é parceiro de fabricantes. Imagens sob CC BY-SA 4.0 exigem crédito, indicação de modificações e link para licença, exibidos na galeria. Os arquivos de imagem deverão ser incorporados localmente quando o ambiente de distribuição permitir transferência verificada, sem alterar as fontes e licenças aprovadas.
+
 # FitSwap Mobile 1.1 (branch de desenvolvimento)
 
 > **PARADA PARA APROVAÇÃO:** interface e infraestrutura de fotos preparadas, mas nenhuma fotografia externa foi importada ou publicada. A versão 1.0 em `main` permanece intacta. Ver `catalogo/GUIA-DE-CADASTRO.md`.

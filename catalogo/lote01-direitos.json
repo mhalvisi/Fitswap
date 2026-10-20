@@ -1,7 +1,7 @@
 {
   "purpose": "Lote 01: aprovação condicional, revisão por arquivo e critérios de bloqueio",
   "approved_by_user_at": "2026-10-19",
-  "verified_at": "2026-10-19",
+  "verified_at": "2026-10-20",
   "integration_scope": "Somente arquivos elegíveis; publicação da main depende de revisão final",
   "items": [
     {
@@ -16,7 +16,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Smith_machine.webp/500px-Smith_machine.webp",
       "notes": "Marca Matrix visível na estrutura; evitar qualquer sugestão de parceria ou endosso.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": false,
       "share_alike_on_adaptations": false,
@@ -24,11 +24,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença confirmada; representação do equipamento compatível; marcas incidentais não significam associação ou endosso. Manter atribuição integral e não remover identidade/autor.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-001.webp"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-002",
@@ -42,7 +42,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Diverging_Lat_Pulldown_Machine.jpg/500px-Diverging_Lat_Pulldown_Machine.jpg",
       "notes": "A foto mostra predominantemente a coluna de pesos; requer associação a modelo divergente, não à puxada alta genérica.",
       "priority": "Média",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": false,
       "share_alike_on_adaptations": false,
@@ -68,7 +68,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Pair_of_8kg_dumbbells_%28Unsplash%29.jpg/960px-Pair_of_8kg_dumbbells_%28Unsplash%29.jpg",
       "notes": "Foto clara de dois halteres de 8 kg; origem Unsplash anterior à mudança de licença.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": false,
       "share_alike_on_adaptations": false,
@@ -76,11 +76,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença e classificação documental confirmadas, com crédito e sem vínculo comercial/endosso.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-003.jpg"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-004",
@@ -94,7 +94,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Leg_press_machine.jpg/500px-Leg_press_machine.jpg",
       "notes": "A descrição da origem diz somente leg press; confirmar subtipo e possíveis marcas visíveis antes de mapear ao leg press 45°.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
@@ -120,7 +120,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Leg_Extension.jpg/500px-Leg_Extension.jpg",
       "notes": "Máquina visível com logomarca; crédito e eventuais edições devem ser registrados.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
@@ -128,11 +128,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença e classificação documental confirmadas, com crédito e sem vínculo comercial/endosso.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-005.jpg"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-006",
@@ -146,7 +146,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Pec_deck_Fly.jpg/500px-Pec_deck_Fly.jpg",
       "notes": "Fotografia frontal com equipamento e placas parcialmente visíveis; observar se corresponde à versão de voador cadastrada.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
@@ -154,11 +154,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença e classificação documental confirmadas, com crédito e sem vínculo comercial/endosso.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-006.jpg"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-007",
@@ -172,7 +172,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Chest_Incline.jpg/500px-Chest_Incline.jpg",
       "notes": "Foco parcial nos braços da máquina; avaliar se a composição é adequada para miniatura.",
       "priority": "Média",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
@@ -180,11 +180,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença e classificação documental confirmadas, com crédito e sem vínculo comercial/endosso.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-007.jpg"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-008",
@@ -198,7 +198,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Lat_pulldown_machine_20180112.jpg/500px-Lat_pulldown_machine_20180112.jpg",
       "notes": "Máquina simples e bem identificável; crédito especificado explicitamente na fonte.",
       "priority": "Alta",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
@@ -206,11 +206,11 @@
       "source_host": "Wikimedia Commons",
       "user_approved_at": "2026-10-19",
       "user_approval_conditions": "licença individual, créditos, fonte e verificação de marca e imagem",
-      "license_reverified_at": "2026-10-19",
+      "license_reverified_at": "2026-10-20",
       "review_status": "eligible",
       "review_reason": "Licença e classificação documental confirmadas, com crédito e sem vínculo comercial/endosso.",
-      "storage": "build-time-download",
-      "output_path": "media/lote01/fs-img-008.jpg"
+      "storage": "remote-preview-only",
+      "output_path": null
     },
     {
       "id": "FS-IMG-009",
@@ -224,7 +224,7 @@
       "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Seated_calf_machine.jpg/960px-Seated_calf_machine.jpg",
       "notes": "Marcas visíveis e pessoa ao fundo parcialmente enquadrada (apenas pernas); inspecionar eventuais restrições adicionais.",
       "priority": "Média",
-      "status": "PENDENTE_DE_APROVACAO",
+      "status": "APROVADO_CONDICIONALMENTE",
       "commercial_allowed_by_reported_license": true,
       "attribution_required": true,
       "share_alike_on_adaptations": true,
